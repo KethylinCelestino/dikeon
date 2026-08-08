@@ -8,6 +8,11 @@ graduacao/
 .env
 .env.local
 
+# Documentos internos: plano de negócio e guia de contas com dados pessoais.
+# Não fazem parte do build e o repositório é público.
+PLANO.md
+SETUP-CONTAS-KETHYLIN.md
+
 # Dependências e artefatos
 .venv/
 __pycache__/
