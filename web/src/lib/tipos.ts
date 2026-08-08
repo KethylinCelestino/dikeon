@@ -34,6 +34,15 @@ export interface Explicacao {
   fundamento: string | null;
 }
 
+export interface Flashcard {
+  id: string;
+  materia: string;
+  tema: string;
+  frente: string;
+  verso: string;
+  fundamento: string | null;
+}
+
 export interface Materia {
   id: string;
   nome: string;

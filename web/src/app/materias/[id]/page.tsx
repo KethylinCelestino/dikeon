@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { materias, getMateria, contarPorTema, filtrar } from "@/lib/questions";
+import { flashcardsDaMateria } from "@/lib/flashcards";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -30,6 +31,7 @@ export default async function MateriaPage({ params }: Props) {
 
   const porTema = contarPorTema(id);
   const total = filtrar({ materia: id }).length;
+  const cartoes = flashcardsDaMateria(id).length;
 
   return (
     <div className="space-y-8">
@@ -41,9 +43,16 @@ export default async function MateriaPage({ params }: Props) {
         <p className="mt-2 text-muted">
           {total} questões · cerca de {materia.questoes_tipicas} das 80 da prova
         </p>
-        <Link href={`/praticar?materia=${id}`} className="btn-primary mt-4">
-          Praticar {materia.nome}
-        </Link>
+        <div className="mt-4 flex flex-wrap gap-3">
+          <Link href={`/praticar?materia=${id}`} className="btn-primary">
+            Praticar {materia.nome}
+          </Link>
+          {cartoes > 0 && (
+            <Link href={`/flashcards?materia=${id}`} className="btn-ghost">
+              {cartoes} flashcards
+            </Link>
+          )}
+        </div>
       </div>
 
       <div>

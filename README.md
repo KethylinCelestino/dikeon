@@ -16,11 +16,13 @@ dike/
 │   ├── edital.json            ← 18 matérias × temas + pesos na prova
 │   ├── parse_provas_1fase.py  ← PDFs → questions_raw.json
 │   ├── classify.py            ← + matéria/tema/vigência → questions.json
-│   └── enrich.py              ← comentário por questão → explicacoes.json
+│   ├── enrich.py              ← comentário por questão → explicacoes.json
+│   └── flashcards.py          ← cartões por tema → flashcards.json
 └── web/                ← Next.js 15 + Tailwind (deploy Vercel)
-    ├── data/           ← questions.json, explicacoes.json, edital.json
-    └── src/app/        ← /, /praticar, /diagnostico, /revisar, /materias,
-                          /simulado, /questao, /progresso
+    ├── data/           ← questions.json, explicacoes.json, flashcards.json,
+    │                     edital.json
+    └── src/app/        ← /, /praticar, /flashcards, /diagnostico, /revisar,
+                          /materias, /simulado, /questao, /progresso
 ```
 
 ## Pipeline
@@ -32,6 +34,7 @@ python3 -m venv .venv
 .venv/bin/python pipeline/parse_provas_1fase.py        # → web/data/questions_raw.json
 ANTHROPIC_API_KEY=... .venv/bin/python pipeline/classify.py   # → web/data/questions.json
 ANTHROPIC_API_KEY=... .venv/bin/python pipeline/enrich.py     # → web/data/explicacoes.json
+ANTHROPIC_API_KEY=... .venv/bin/python pipeline/flashcards.py # → web/data/flashcards.json
 ```
 
 `enrich.py --custo` estima o gasto antes de rodar; `--limit N` processa uma
@@ -45,7 +48,12 @@ extração se propagam sem recusto de classificação.
 
 **3.179 questões de 41 exames**, todas com gabarito e matéria, e **3.157
 comentários** (todas as questões válidas), sendo 94% com dispositivo legal
-citado.
+citado, e **1.421 flashcards** cobrindo 184 temas.
+
+Os flashcards são gerados por tema do edital, não por questão: 194 temas contra
+3.157 questões, e o cartão sai melhor — cobre a regra que a banca repete em vez
+do enunciado de uma prova específica. Cada tema é gerado a partir de uma
+amostra das suas próprias questões e comentários. Custou US$ 4,95.
 
 Validações que passam:
 - distribuição de gabaritos uniforme (A 23,6% · B 26,4% · C 25,2% · D 24,9%)
@@ -126,8 +134,10 @@ roda com o progresso no navegador, e o build passa nos dois estados. Para
 ligar, ver [ATIVAR-CONTAS.md](ATIVAR-CONTAS.md) — são três variáveis de
 ambiente, sem código a escrever.
 
-Pendente: flashcards com repetição espaçada, que fazem mais sentido depois da
-conta existir.
+Flashcards com repetição espaçada estão em `/flashcards`. O agendamento é uma
+variante enxuta do SM-2 (escada fixa de intervalos: 1, 3, 7, 16, 35, 75 dias),
+com estado no localStorage — é a próxima coisa a migrar para o banco quando a
+conta estiver ligada.
 
 **Fase 3 — ZEL completo**: sessão diária, streak/XP/conquistas, chat da tutora
 Zel com contexto do desempenho, Vade Mecum navegável.
