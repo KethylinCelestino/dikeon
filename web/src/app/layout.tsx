@@ -115,11 +115,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <main className="mx-auto max-w-5xl px-4 py-8">{children}</main>
 
-        <footer className="mt-16 border-t border-line px-4 py-8 text-center text-sm text-muted dark:border-white/10">
-          <p>
-            {SITE_NAME} — questões do Exame de Ordem Unificado, de autoria da
-            FGV/OAB, reproduzidas para fins de estudo.
-          </p>
+        <footer className="mt-16 border-t border-line px-4 py-8 text-sm text-muted dark:border-white/10">
+          <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4">
+            <p>
+              {SITE_NAME} — material educativo para o Exame de Ordem. Não
+              constitui consultoria jurídica.
+            </p>
+            <nav className="flex gap-4">
+              <Link href="/termos" className="hover:underline">
+                Termos de Uso
+              </Link>
+              <Link href="/privacidade" className="hover:underline">
+                Privacidade
+              </Link>
+            </nav>
+          </div>
         </footer>
       </body>
     </html>

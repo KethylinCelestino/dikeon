@@ -20,6 +20,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: url("/vademecum"), changeFrequency: "monthly", priority: 0.8 },
     { url: url("/diagnostico"), changeFrequency: "monthly", priority: 0.7 },
     { url: url("/zel"), changeFrequency: "monthly", priority: 0.6 },
+    { url: url("/termos"), changeFrequency: "yearly", priority: 0.3 },
+    { url: url("/privacidade"), changeFrequency: "yearly", priority: 0.3 },
   ];
 
   const porMateria: MetadataRoute.Sitemap = materias.map((m) => ({
