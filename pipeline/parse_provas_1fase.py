@@ -69,17 +69,31 @@ ALT_LINE = re.compile(r"^\(?([A-E])\)\s*(.*)$")
 _COR = r"(?:BRANC[AO]|VERDE|AMAREL[AO]|ROS[AE]|AZUL|CINZA)"
 _TIPO = r"(?:PROVA\s+)?TIPO\s*\d*"
 _PAG = r"P[ÁA]GINA\s*\d*"
+_EO = r"EXAME\s+D[EO]\s+ORDEM(?:\s+UNIFICADO)?"
+_SUFIXOS = rf"(?:\s*[–—-]?\s*{_TIPO})?(?:\s*[–—-]?\s*{_COR})?(?:\s*[–—-]?\s*{_PAG})?\s*\d*\s*"
+# Letras acentuadas incluidas: sem isso, o numeral romano casa dentro de
+# palavras ("no[vo] Exame", "Bras[il] Exame") e come texto legitimo.
+_L = r"[A-Za-zÀ-ÿ]"
 
 # O cabecalho da pagina aparece em varias formas e frequentemente chega
 # picotado ao texto. Cobrimos tanto a forma completa quanto os rabos que
 # sobram quando parte dele ja foi removida como linha isolada.
+#
+# "Exame de Ordem" tambem aparece DENTRO de enunciados e alternativas (o tema
+# e recorrente em Etica), entao a faixa so e tratada como cabecalho quando vem
+# acompanhada de um marcador: numeral do exame, caixa alta, edicao "2010.2",
+# "Caderno", tipo, cor ou pagina. "aprovacao em Exame de Ordem" fica intacto.
 INLINE_NOISE = re.compile(
     "|".join(
         [
             # "XV EXAME DE ORDEM UNIFICADO - TIPO 01 - BRANCA - Página 7"
-            rf"\s*(?:[IVXL\d.]+\s*[oº°]?\s*)?EXAME\s+D[OE]\s+ORDEM"
-            rf"(?:\s+UNIFICADO)?(?:\s*[–—-]?\s*{_TIPO})?"
-            rf"(?:\s*[–—-]?\s*{_COR})?(?:\s*[–—-]?\s*{_PAG})?\s*\d*\s*",
+            rf"\s*(?<!{_L})[IVXL]{{1,6}}(?!{_L})\s*[oº°]?\s*{_EO}{_SUFIXOS}",
+            # "42º EXAME DE ORDEM UNIFICADO"
+            rf"\s*\d{{1,3}}\s*[oº°]\s*{_EO}{_SUFIXOS}",
+            # Capa: "Exame de Ordem Unificado – 2010.2 Caderno de prova"
+            rf"\s*{_EO}\s*[–—-]?\s*(?:\d{{4}}\.\d|Caderno)",
+            # "EXAME DE ORDEM UNIFICADO - TIPO 1" (sem numeral antes)
+            rf"\s*{_EO}\s*[–—-]?\s*(?:{_TIPO}|{_COR}|{_PAG})\s*\d*\s*",
             # Rabo "- TIPO 1 - BRANCO 3": exige tipo E cor para nao pegar
             # texto legitimo.
             rf"\s*[–—-]?\s*{_TIPO}\s*[–—-]?\s*{_COR}\s*\d*\s*",
@@ -90,6 +104,11 @@ INLINE_NOISE = re.compile(
     re.I,
 )
 
+# Caixa alta e cabecalho por si so ("XXX EXAME DE ORDEM UNIFICADO"); no corpo
+# do enunciado a faixa sempre aparece em caixa mista. Case-sensitive de
+# proposito, por isso fora do INLINE_NOISE.
+CAIXA_ALTA_NOISE = re.compile(r"\s*EXAME\s+DE\s+ORDEM(?:\s+UNIFICADO)?\s*")
+
 
 def limpar_cabecalho(s: str) -> str:
     """Remove o cabecalho da pagina que sobrou no meio do texto.
@@ -98,7 +117,8 @@ def limpar_cabecalho(s: str) -> str:
     quebrar o cabecalho em pedacos ("IV", "EXAME DE ORDEM UNIFICADO",
     "Página 3") que so voltam a ser contiguos apos a juncao.
     """
-    return re.sub(r"\s{2,}", " ", INLINE_NOISE.sub(" ", s)).strip()
+    s = CAIXA_ALTA_NOISE.sub(" ", INLINE_NOISE.sub(" ", s))
+    return re.sub(r"\s{2,}", " ", s).strip()
 
 
 def norm(s: str) -> str:
@@ -190,7 +210,9 @@ def texto_suspeito(texto: str) -> bool:
     return len(orfas) >= 2
 
 
-def parse_block(body: list[str]) -> tuple[str, dict[str, str]] | None:
+def parse_block(
+    body: list[str], numero: int | None = None
+) -> tuple[str, dict[str, str]] | None:
     """Separa enunciado das alternativas (A)-(D)."""
     enunciado: list[str] = []
     alts: dict[str, list[str]] = {}
@@ -208,6 +230,12 @@ def parse_block(body: list[str]) -> tuple[str, dict[str, str]] | None:
     if sorted(alts) != ["A", "B", "C", "D"]:
         return None
     texto = limpar_cabecalho(norm(" ".join(enunciado)))
+    # Em alguns exames antigos o marcador da questao anterior vaza para o
+    # inicio do bloco ("1 Esculápio, advogado..." na questao 2). So removemos
+    # quando o numero e exatamente o da questao anterior, para nao comer um
+    # numero legitimo do enunciado.
+    if numero is not None:
+        texto = re.sub(rf"^{numero - 1}\s+(?=\D)", "", texto)
     opcoes = {k: limpar_cabecalho(norm(" ".join(v))) for k, v in alts.items()}
     if not texto or any(not v for v in opcoes.values()):
         return None
@@ -322,7 +350,7 @@ def parse_exame(exame_dir: Path, verbose: bool = False) -> list[dict]:
         falhas: list[int] = []
         corrompidas = 0
         for numero in sorted(blocks):
-            parsed = parse_block(blocks[numero])
+            parsed = parse_block(blocks[numero], numero)
             if parsed is None:
                 falhas.append(numero)
                 continue

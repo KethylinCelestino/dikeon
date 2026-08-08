@@ -42,8 +42,19 @@ Validações que passam:
 - distribuição de gabaritos uniforme (A 23,6% · B 26,4% · C 25,2% · D 24,9%)
 - distribuição por matéria com desvio máximo de 1,0 questão/exame vs. o edital
 - zero resíduo de cabeçalho de página no texto
+- nenhum enunciado ou alternativa com texto comido pela limpeza de cabeçalho
 - 93 questões sinalizadas como desatualizadas (reforma trabalhista, CPC/2015,
   Pacote Anticrime) e escondidas por padrão
+
+A limpeza de cabeçalho apagava a expressão "Exame de Ordem" onde quer que ela
+aparecesse, inclusive no meio de enunciados e alternativas — tema recorrente em
+Ética, onde a frase é parte do caso ("após aprovação em Exame de Ordem, ..."). O
+filtro agora só trata a faixa como cabeçalho quando vem com um marcador
+(numeral do exame, caixa alta, edição "2010.2", "Caderno", tipo, cor ou página).
+Recuperou 8 enunciados e 22 alternativas; uma delas ("submeter-se a no .") não
+tinha sentido antes. O parser também descarta o marcador da questão anterior
+quando ele vaza para o início do bloco, e só quando o número bate com o da
+questão anterior.
 
 Lacunas conhecidas:
 - **exames 15 e 16** descartados: o PDF tem camadas de texto sobrepostas que
