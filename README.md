@@ -17,12 +17,14 @@ dike/
 │   ├── parse_provas_1fase.py  ← PDFs → questions_raw.json
 │   ├── classify.py            ← + matéria/tema/vigência → questions.json
 │   ├── enrich.py              ← comentário por questão → explicacoes.json
-│   └── flashcards.py          ← cartões por tema → flashcards.json
+│   ├── flashcards.py          ← cartões por tema → flashcards.json
+│   └── vademecum.py           ← PDF do Senado → vademecum.json
 └── web/                ← Next.js 15 + Tailwind (deploy Vercel)
     ├── data/           ← questions.json, explicacoes.json, flashcards.json,
-    │                     edital.json
-    └── src/app/        ← /, /praticar, /flashcards, /diagnostico, /revisar,
-                          /materias, /simulado, /questao, /progresso
+    │                     vademecum.json, edital.json
+    └── src/app/        ← /, /praticar, /flashcards, /zel, /vademecum, /perfil,
+                          /diagnostico, /revisar, /materias, /simulado,
+                          /questao, /progresso
 ```
 
 ## Pipeline
@@ -35,6 +37,7 @@ python3 -m venv .venv
 ANTHROPIC_API_KEY=... .venv/bin/python pipeline/classify.py   # → web/data/questions.json
 ANTHROPIC_API_KEY=... .venv/bin/python pipeline/enrich.py     # → web/data/explicacoes.json
 ANTHROPIC_API_KEY=... .venv/bin/python pipeline/flashcards.py # → web/data/flashcards.json
+.venv/bin/python pipeline/vademecum.py                        # → web/data/vademecum.json
 ```
 
 `enrich.py --custo` estima o gasto antes de rodar; `--limit N` processa uma
@@ -139,8 +142,17 @@ variante enxuta do SM-2 (escada fixa de intervalos: 1, 3, 7, 16, 35, 75 dias),
 com estado no localStorage — é a próxima coisa a migrar para o banco quando a
 conta estiver ligada.
 
-**Fase 3 — ZEL completo**: sessão diária, streak/XP/conquistas, chat da tutora
-Zel com contexto do desempenho, Vade Mecum navegável.
+**Fase 3 — concluída.** Sessão diária na home, XP/nível/streak/conquistas,
+perfil com relatório de 30 dias, Vade Mecum com 6.008 artigos em 11 diplomas e
+busca, e a tutora Zel.
+
+XP, nível e streak são derivados do histórico, não guardados à parte: o placar
+não tem como divergir do que a pessoa fez. A meta diária é em questões, não em
+minutos — tempo de tela não é medida honesta de estudo.
+
+A Zel precisa de `ANTHROPIC_API_KEY` no ambiente da Vercel; sem ela a tela
+avisa e o resto do app segue normal. Ranking semanal ficou de fora: sem contas
+não há com quem comparar.
 
 **Fase 4 — expansão**: recuperar exames 12/15/16 via OCR ou parse por LLM,
 módulo de 2ª fase (peças + padrão de respostas), SEO programático por tema.
