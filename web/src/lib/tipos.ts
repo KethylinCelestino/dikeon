@@ -27,6 +27,13 @@ export interface Question {
   motivo_desatualizacao?: string | null;
 }
 
+/** Espelha lib/explicacoes.ts sem arrastar o JSON para o bundle do cliente. */
+export interface Explicacao {
+  correta: string;
+  erradas: Record<string, string>;
+  fundamento: string | null;
+}
+
 export interface Materia {
   id: string;
   nome: string;

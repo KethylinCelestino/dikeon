@@ -37,6 +37,22 @@ export function tentativas(): Tentativa[] {
   return ler();
 }
 
+/**
+ * Questões pendentes de revisão: as que a pessoa errou e ainda não acertou
+ * numa tentativa posterior. Acertar depois tira a questão da fila.
+ *
+ * Ordena pelo erro mais antigo primeiro — quanto mais tempo passou, mais
+ * provável que o conteúdo tenha escapado.
+ */
+export function paraRevisar(): string[] {
+  const ultima = new Map<string, Tentativa>();
+  for (const t of ler()) ultima.set(t.questaoId, t);
+  return [...ultima.values()]
+    .filter((t) => !t.acertou)
+    .sort((a, b) => a.em - b.em)
+    .map((t) => t.questaoId);
+}
+
 export interface Desempenho {
   total: number;
   acertos: number;

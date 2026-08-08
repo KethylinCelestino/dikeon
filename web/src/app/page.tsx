@@ -23,8 +23,8 @@ export default function Home() {
           <Link href="/praticar" className="btn-primary">
             Começar a praticar
           </Link>
-          <Link href="/simulado" className="btn-ghost">
-            Fazer um simulado
+          <Link href="/diagnostico" className="btn-ghost">
+            Descobrir por onde começar
           </Link>
         </div>
       </section>

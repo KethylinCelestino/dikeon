@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import type { Question } from "@/lib/tipos";
+import type { Explicacao, Question } from "@/lib/tipos";
 import { nomeMateria, rotuloExame } from "@/lib/tipos";
 
 const LETRAS = ["A", "B", "C", "D"] as const;
@@ -50,6 +50,8 @@ interface Props {
   onResponder?: (escolhida: string, acertou: boolean) => void;
   escolhidaInicial?: string | null;
   linkPermanente?: boolean;
+  /** Comentário da questão, exibido depois de responder. */
+  explicacao?: Explicacao | null;
 }
 
 export function QuestionCard({
@@ -59,6 +61,7 @@ export function QuestionCard({
   onResponder,
   escolhidaInicial = null,
   linkPermanente = false,
+  explicacao = null,
 }: Props) {
   const [escolhida, setEscolhida] = useState<string | null>(escolhidaInicial);
   const respondida = escolhida !== null;
@@ -156,6 +159,38 @@ export function QuestionCard({
             <p className="rounded-xl bg-warning-tint px-3 py-2 text-warning dark:bg-warning/15 dark:text-cream">
               Atenção: {questao.motivo_desatualizacao}
             </p>
+          )}
+
+          {explicacao && (
+            <div className="rounded-xl bg-info-tint p-4 dark:bg-white/5">
+              <p className="eyebrow mb-2">Comentário</p>
+              <p className="leading-relaxed">{explicacao.correta}</p>
+
+              {/* Só o erro que a pessoa cometeu: comentar as outras três
+                  transformaria a revisão em leitura longa. */}
+              {!acertou && escolhida && explicacao.erradas[escolhida] && (
+                <p className="mt-3 leading-relaxed">
+                  <span className="font-semibold">
+                    Por que a {escolhida} não serve:{" "}
+                  </span>
+                  {explicacao.erradas[escolhida]}
+                </p>
+              )}
+
+              {explicacao.fundamento && (
+                <p className="mt-3 text-[13px]">
+                  <span className="text-muted">Fundamento: </span>
+                  <span className="font-medium text-gold-text decoration-dotted underline-offset-4 dark:text-gold">
+                    {explicacao.fundamento}
+                  </span>
+                </p>
+              )}
+
+              <p className="mt-3 text-[13px] text-muted">
+                Comentário gerado por IA a partir do gabarito oficial. Confira o
+                dispositivo antes de usar como fonte.
+              </p>
+            </div>
           )}
         </div>
       )}

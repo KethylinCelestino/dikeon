@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Runner } from "./Runner";
 import { montarSimulado } from "@/lib/questions";
+import { mapaExplicacoes } from "@/lib/explicacoes";
 
 export const metadata: Metadata = {
   title: "Simulado da OAB 1ª fase",
@@ -14,5 +15,10 @@ export const dynamic = "force-dynamic";
 
 export default function Simulado() {
   const questoes = montarSimulado(Math.floor(Date.now() / 1000));
-  return <Runner questoes={questoes} />;
+  return (
+    <Runner
+      questoes={questoes}
+      explicacoes={mapaExplicacoes(questoes.map((q) => q.id))}
+    />
+  );
 }

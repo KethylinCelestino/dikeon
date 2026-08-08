@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { QuestionCard } from "@/components/QuestionCard";
-import { nomeMateria, type Question } from "@/lib/tipos";
+import { nomeMateria, type Explicacao, type Question } from "@/lib/tipos";
 import { registrar } from "@/lib/progresso";
 
 const DURACAO = 5 * 60 * 60; // 5 horas, igual a prova real
@@ -16,7 +16,13 @@ function relogio(s: number): string {
   return [h, m, seg].map((n) => String(n).padStart(2, "0")).join(":");
 }
 
-export function Runner({ questoes }: { questoes: Question[] }) {
+export function Runner({
+  questoes,
+  explicacoes,
+}: {
+  questoes: Question[];
+  explicacoes: Record<string, Explicacao>;
+}) {
   const [iniciado, setIniciado] = useState(false);
   const [i, setI] = useState(0);
   const [respostas, setRespostas] = useState<Record<string, string>>({});
@@ -132,6 +138,7 @@ export function Runner({ questoes }: { questoes: Question[] }) {
               questao={q}
               posicao={`${n + 1} de ${questoes.length}`}
               escolhidaInicial={respostas[q.id] ?? null}
+              explicacao={explicacoes[q.id] ?? null}
               linkPermanente
             />
           ))}

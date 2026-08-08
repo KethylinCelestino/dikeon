@@ -8,6 +8,7 @@ import {
   nomeMateria,
   rotuloExame,
 } from "@/lib/questions";
+import { getExplicacao } from "@/lib/explicacoes";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -52,7 +53,7 @@ export default async function QuestaoPage({ params }: Props) {
         {questao.tema && <p className="mt-1 text-muted">{questao.tema}</p>}
       </div>
 
-      <QuestionCard questao={questao} />
+      <QuestionCard questao={questao} explicacao={getExplicacao(questao.id)} />
 
       {relacionadas.length > 0 && (
         <section>
