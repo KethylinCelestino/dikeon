@@ -54,9 +54,10 @@ export const metadata: Metadata = {
 const NAV = [
   { href: "/praticar", label: "Praticar" },
   { href: "/flashcards", label: "Flashcards" },
-  { href: "/materias", label: "Matérias" },
+  { href: "/zel", label: "Zel" },
+  { href: "/vademecum", label: "Vade Mecum" },
   { href: "/simulado", label: "Simulado" },
-  { href: "/progresso", label: "Progresso" },
+  { href: "/perfil", label: "Perfil" },
 ];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -90,7 +91,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Link
                   key={n.href}
                   href={n.href}
-                  className="focavel rounded-lg px-3 py-2 text-sm font-medium text-muted transition hover:bg-bordo/5 hover:text-ink dark:hover:bg-white/10 dark:hover:text-cream"
+                  className="focavel whitespace-nowrap rounded-lg px-2.5 py-2 text-sm font-medium text-muted transition hover:bg-bordo/5 hover:text-ink dark:hover:bg-white/10 dark:hover:text-cream"
                 >
                   {n.label}
                 </Link>

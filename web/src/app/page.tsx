@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { questions, materias, contarPorMateria, exames } from "@/lib/questions";
+import { SessaoHoje } from "@/components/SessaoHoje";
 
 export default function Home() {
   const contagem = contarPorMateria();
@@ -7,6 +8,8 @@ export default function Home() {
 
   return (
     <div className="space-y-12">
+      <SessaoHoje />
+
       <section className="pt-6">
         <p className="eyebrow">Exame de Ordem Unificado · 1ª fase</p>
         <h1 className="mt-3 font-serif text-4xl font-semibold leading-tight sm:text-5xl">
