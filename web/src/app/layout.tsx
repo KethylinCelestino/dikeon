@@ -3,7 +3,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Inter, Lora } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
+import { ptBR } from "@clerk/localizations";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { Conta } from "@/components/Conta";
+import { authAtiva } from "@/lib/auth";
 import { SITE_NAME, SITE_TAGLINE, SITE_URL, DEFAULT_DESCRIPTION } from "@/lib/seo";
 
 const inter = Inter({
@@ -56,7 +60,7 @@ const NAV = [
 ];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
+  const pagina = (
     <html
       lang="pt-BR"
       suppressHydrationWarning
@@ -92,6 +96,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </Link>
               ))}
             </nav>
+            <Conta />
             <ThemeToggle />
           </div>
           <nav className="flex gap-1 overflow-x-auto border-t border-line px-4 py-2 sm:hidden dark:border-white/10">
@@ -117,5 +122,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </footer>
       </body>
     </html>
+  );
+
+  // Envolver com o ClerkProvider sem chaves derruba a renderização inteira.
+  return authAtiva ? (
+    <ClerkProvider localization={ptBR}>{pagina}</ClerkProvider>
+  ) : (
+    pagina
   );
 }

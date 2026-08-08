@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Painel } from "./Painel";
 import { contarPorMateria } from "@/lib/questions";
+import { AvisoSemConta } from "@/components/Conta";
 
 export const metadata: Metadata = {
   title: "Seu progresso",
@@ -9,5 +10,10 @@ export const metadata: Metadata = {
 };
 
 export default function Progresso() {
-  return <Painel totalPorMateria={contarPorMateria()} />;
+  return (
+    <div className="space-y-6">
+      <Painel totalPorMateria={contarPorMateria()} />
+      <AvisoSemConta />
+    </div>
+  );
 }

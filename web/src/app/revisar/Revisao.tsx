@@ -26,27 +26,27 @@ export function Revisao() {
   const [respondida, setRespondida] = useState(false);
 
   useEffect(() => {
-    const ids = paraRevisar();
-    if (!ids.length) {
-      setEstado({ fase: "vazio" });
-      return;
-    }
-    // O histórico está no localStorage; o banco de questões, no servidor.
-    fetch("/api/questoes", {
+    void paraRevisar().then((ids) => {
+      if (!ids.length) {
+        setEstado({ fase: "vazio" });
+        return;
+      }
+      // O histórico é do usuário; o banco de questões vive no servidor.
+      return fetch("/api/questoes", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ids: ids.slice(0, TAMANHO_SESSAO) }),
     })
-      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
-      .then((d) =>
-        setEstado({
-          fase: "pronto",
-          questoes: d.questoes,
-          explicacoes: d.explicacoes,
-          pendentes: ids.length,
-        }),
-      )
-      .catch(() => setEstado({ fase: "erro" }));
+        .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
+        .then((d) =>
+          setEstado({
+            fase: "pronto",
+            questoes: d.questoes,
+            explicacoes: d.explicacoes,
+            pendentes: ids.length,
+          }),
+        );
+    }).catch(() => setEstado({ fase: "erro" }));
   }, []);
 
   if (estado.fase === "carregando") {

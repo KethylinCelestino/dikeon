@@ -14,7 +14,9 @@ export function Painel({
   // O progresso vive no localStorage, entao so existe apos a montagem.
   const [dados, setDados] = useState<Desempenho | null>(null);
 
-  useEffect(() => setDados(desempenho()), []);
+  useEffect(() => {
+    void desempenho().then(setDados);
+  }, []);
 
   if (!dados) return <p className="text-muted">Carregando…</p>;
 
@@ -44,8 +46,9 @@ export function Painel({
       <div>
         <h1 className="font-serif text-3xl font-semibold">Seu progresso</h1>
         <p className="mt-2 text-muted">
-          Salvo neste navegador. Com conta, ele passa a acompanhar você em
-          qualquer dispositivo.
+          {dados.daConta
+            ? "Salvo na sua conta e disponível em qualquer dispositivo."
+            : "Salvo neste navegador. Com conta, ele acompanha você em qualquer dispositivo."}
         </p>
       </div>
 
@@ -53,7 +56,7 @@ export function Painel({
         {[
           { n: `${pct}%`, l: "taxa de acertos" },
           { n: String(dados.total), l: "questões respondidas" },
-          { n: String(dados.respondidas.size), l: "questões distintas" },
+          { n: String(dados.distintas), l: "questões distintas" },
         ].map((s) => (
           <div key={s.l} className="card">
             <p className="font-serif text-3xl font-semibold">{s.n}</p>
@@ -97,7 +100,7 @@ export function Painel({
       <button
         onClick={() => {
           limpar();
-          setDados(desempenho());
+          void desempenho().then(setDados);
         }}
         className="text-sm text-muted hover:underline"
       >
