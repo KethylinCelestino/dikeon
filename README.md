@@ -15,10 +15,12 @@ dike/
 ├── pipeline/           ← Python: extração e classificação
 │   ├── edital.json            ← 18 matérias × temas + pesos na prova
 │   ├── parse_provas_1fase.py  ← PDFs → questions_raw.json
-│   └── classify.py            ← + matéria/tema/vigência → questions.json
+│   ├── classify.py            ← + matéria/tema/vigência → questions.json
+│   └── enrich.py              ← comentário por questão → explicacoes.json
 └── web/                ← Next.js 15 + Tailwind (deploy Vercel)
-    ├── data/           ← questions.json, edital.json
-    └── src/app/        ← /, /praticar, /materias, /simulado, /questao, /progresso
+    ├── data/           ← questions.json, explicacoes.json, edital.json
+    └── src/app/        ← /, /praticar, /diagnostico, /revisar, /materias,
+                          /simulado, /questao, /progresso
 ```
 
 ## Pipeline
@@ -29,7 +31,11 @@ python3 -m venv .venv
 
 .venv/bin/python pipeline/parse_provas_1fase.py        # → web/data/questions_raw.json
 ANTHROPIC_API_KEY=... .venv/bin/python pipeline/classify.py   # → web/data/questions.json
+ANTHROPIC_API_KEY=... .venv/bin/python pipeline/enrich.py     # → web/data/explicacoes.json
 ```
+
+`enrich.py --custo` estima o gasto antes de rodar; `--limit N` processa uma
+amostra. A rodada completa das 3.157 questões custou US$ 22,71 com Sonnet.
 
 `classify.py` é idempotente: reaproveita a classificação já feita e só chama a
 API para questões novas. O texto sempre vem fresco do parser, então melhorias na
@@ -37,7 +43,9 @@ extração se propagam sem recusto de classificação.
 
 ### Estado atual
 
-**3.179 questões de 41 exames**, todas com gabarito e matéria.
+**3.179 questões de 41 exames**, todas com gabarito e matéria, e **3.157
+comentários** (todas as questões válidas), sendo 94% com dispositivo legal
+citado.
 
 Validações que passam:
 - distribuição de gabaritos uniforme (A 23,6% · B 26,4% · C 25,2% · D 24,9%)
@@ -106,13 +114,18 @@ examedeordem.oab.org.br, mas vale manter uma cópia no Google Drive.
 
 ## Próximos passos
 
-**Fase 2 — conta e inteligência de estudo**
-- Clerk + Neon/Drizzle (credenciais do banco já em `.env` como `DB_NEON`)
-- migrar `src/lib/progresso.ts` de localStorage para API; a interface já foi
-  desenhada para essa troca
-- `/diagnostico` (teste inicial que calibra o plano) e fila de revisão de erradas
-- flashcards com repetição espaçada
-- explicações por alternativa geradas em lote, ancoradas no dispositivo legal
+**Fase 2 — parcialmente concluída**
+
+Feito: comentários por questão com fundamento legal, `/revisar` (fila de
+erros) e `/diagnostico` (ordem de prioridade por matéria).
+
+Bloqueado: auth e persistência. Falta criar as chaves do Clerk **do Dikeon** —
+as que existem no workspace são do exame-seguros e autenticariam contra o app
+errado. Com elas, migrar `src/lib/progresso.ts` de localStorage para o Neon
+(`DB_NEON` já está no `.env`); a interface do módulo foi desenhada para essa
+troca.
+
+Pendente também: flashcards com repetição espaçada.
 
 **Fase 3 — ZEL completo**: sessão diária, streak/XP/conquistas, chat da tutora
 Zel com contexto do desempenho, Vade Mecum navegável.
