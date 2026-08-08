@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { materias, getMateria, contarPorTema, filtrar } from "@/lib/questions";
 import { flashcardsDaMateria } from "@/lib/flashcards";
+import { slugificar } from "@/lib/slug";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -63,7 +64,7 @@ export default async function MateriaPage({ params }: Props) {
             return (
               <Link
                 key={tema}
-                href={`/praticar?materia=${id}&tema=${encodeURIComponent(tema)}`}
+                href={`/materias/${id}/${slugificar(tema)}`}
                 className={`flex items-center justify-between rounded-xl border border-line px-4 py-3 text-sm transition dark:border-white/15 ${
                   n
                     ? "hover:border-bordo/30 dark:hover:border-cream/30"

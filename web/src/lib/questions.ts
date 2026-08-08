@@ -61,6 +61,26 @@ export function contarPorTema(materia: string): Record<string, number> {
   return out;
 }
 
+/** Pares matéria+tema com questões, para as páginas de tema. */
+export function temasComQuestoes(): { materia: string; tema: string; n: number }[] {
+  const contagem = new Map<string, number>();
+  for (const q of questions) {
+    if (!q.materia || !q.tema || q.desatualizada) continue;
+    const k = `${q.materia}::${q.tema}`;
+    contagem.set(k, (contagem.get(k) ?? 0) + 1);
+  }
+  return [...contagem.entries()].map(([k, n]) => {
+    const [materia, tema] = k.split("::");
+    return { materia, tema, n };
+  });
+}
+
+export function questoesDoExame(exame: string): Question[] {
+  return questions
+    .filter((q) => q.exame === exame)
+    .sort((a, b) => a.numero - b.numero);
+}
+
 export function exames(): string[] {
   return [...new Set(questions.map((q) => q.exame))].sort(
     (a, b) => ordemExame(b) - ordemExame(a),

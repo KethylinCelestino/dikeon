@@ -56,7 +56,7 @@ const NAV = [
   { href: "/flashcards", label: "Flashcards" },
   { href: "/zel", label: "Zel" },
   { href: "/vademecum", label: "Vade Mecum" },
-  { href: "/simulado", label: "Simulado" },
+  { href: "/exames", label: "Provas" },
   { href: "/perfil", label: "Perfil" },
 ];
 
