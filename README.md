@@ -114,18 +114,20 @@ examedeordem.oab.org.br, mas vale manter uma cópia no Google Drive.
 
 ## Próximos passos
 
-**Fase 2 — parcialmente concluída**
+**Fase 2 — concluída, com a conta aguardando chaves**
 
 Feito: comentários por questão com fundamento legal, `/revisar` (fila de
-erros) e `/diagnostico` (ordem de prioridade por matéria).
+erros), `/diagnostico` (ordem de prioridade por matéria), e toda a camada de
+conta — Clerk, tabela `tentativas` no Neon, `/api/tentativas` e o
+`progresso.ts` em modo duplo.
 
-Bloqueado: auth e persistência. Falta criar as chaves do Clerk **do Dikeon** —
-as que existem no workspace são do exame-seguros e autenticariam contra o app
-errado. Com elas, migrar `src/lib/progresso.ts` de localStorage para o Neon
-(`DB_NEON` já está no `.env`); a interface do módulo foi desenhada para essa
-troca.
+A autenticação está **construída e desligada**: sem as chaves no ambiente o app
+roda com o progresso no navegador, e o build passa nos dois estados. Para
+ligar, ver [ATIVAR-CONTAS.md](ATIVAR-CONTAS.md) — são três variáveis de
+ambiente, sem código a escrever.
 
-Pendente também: flashcards com repetição espaçada.
+Pendente: flashcards com repetição espaçada, que fazem mais sentido depois da
+conta existir.
 
 **Fase 3 — ZEL completo**: sessão diária, streak/XP/conquistas, chat da tutora
 Zel com contexto do desempenho, Vade Mecum navegável.
