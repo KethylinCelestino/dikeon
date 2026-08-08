@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { questions, materias, exames, temasComQuestoes } from "@/lib/questions";
 import { listaDiplomas } from "@/lib/vademecum";
+import { AREAS, listaProvas } from "@/lib/segunda-fase";
 import { slugificar } from "@/lib/slug";
 import { SITE_URL } from "@/lib/seo";
 
@@ -20,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: url("/vademecum"), changeFrequency: "monthly", priority: 0.8 },
     { url: url("/diagnostico"), changeFrequency: "monthly", priority: 0.7 },
     { url: url("/zel"), changeFrequency: "monthly", priority: 0.6 },
+    { url: url("/2a-fase"), changeFrequency: "monthly", priority: 0.9 },
     { url: url("/termos"), changeFrequency: "yearly", priority: 0.3 },
     { url: url("/privacidade"), changeFrequency: "yearly", priority: 0.3 },
   ];
@@ -49,6 +51,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
+  const porArea: MetadataRoute.Sitemap = AREAS.map((a) => ({
+    url: url(`/2a-fase/${a.slug}`),
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  const porProva2a: MetadataRoute.Sitemap = listaProvas.map((p) => ({
+    url: url(`/2a-fase/${p.area}/${p.exame}`),
+    changeFrequency: "yearly",
+    priority: 0.7,
+  }));
+
   const porQuestao: MetadataRoute.Sitemap = questions.map((q) => ({
     url: url(`/questao/${q.id}`),
     changeFrequency: "yearly",
@@ -60,6 +74,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...porMateria,
     ...porTema,
     ...porExame,
+    ...porArea,
+    ...porProva2a,
     ...porDiploma,
     ...porQuestao,
   ];

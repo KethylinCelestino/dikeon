@@ -57,6 +57,7 @@ const NAV = [
   { href: "/zel", label: "Zel" },
   { href: "/vademecum", label: "Vade Mecum" },
   { href: "/exames", label: "Provas" },
+  { href: "/2a-fase", label: "2ª fase" },
   { href: "/perfil", label: "Perfil" },
 ];
 
@@ -86,7 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 dikeon
               </span>
             </Link>
-            <nav className="ml-auto hidden items-center gap-1 sm:flex">
+            <nav className="ml-auto hidden items-center gap-1 lg:flex">
               {NAV.map((n) => (
                 <Link
                   key={n.href}
@@ -100,7 +101,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Conta />
             <ThemeToggle />
           </div>
-          <nav className="flex gap-1 overflow-x-auto border-t border-line px-4 py-2 sm:hidden dark:border-white/10">
+          <nav className="flex gap-1 overflow-x-auto border-t border-line px-4 py-2 lg:hidden dark:border-white/10">
             {NAV.map((n) => (
               <Link
                 key={n.href}
