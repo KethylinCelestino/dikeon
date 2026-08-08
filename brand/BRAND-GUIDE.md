@@ -41,16 +41,17 @@ Arquivos em `brand/logo/`:
 | `dikeon-logo-horizontal-dark.svg` | Assinatura sobre navy / dark mode |
 | `dikeon-icon-mono.svg` | Monocromático (carimbo, impressão, watermark) |
 
-**Conceito.** Monograma **D** em traço geométrico com uma **balança escondida no contraforma**: a trave e os dois pratos suspensos vivem no vazio interno do D. À primeira vista é um D; no segundo olhar, a balança. No wordmark, o pingo do "i" é dourado: o **ponto de equilíbrio**, que o produto reutiliza como marcador de progresso, notificação e XP.
+**Conceito.** Monograma **D** em traço geométrico segurando uma **balança clássica em traço flat no contraforma**: pivô em anel, trave curva, pratos e coluna vivem no vazio interno da letra. O D é a moldura; a balança é o conteúdo. No wordmark, o pingo do "i" é dourado: o **ponto de equilíbrio**, que o produto reutiliza como marcador de progresso, notificação e XP.
 
-**Cores do logo.** Somente navy `#0C1F3C`, ouro `#E2B84A` e creme `#FAF6ED`. Sobre claro: tile navy + D ouro + wordmark navy. Sobre escuro: tile ouro + D navy + wordmark creme.
+**Cores do logo.** Somente navy `#0C1F3C`, ouro `#E2B84A` e creme `#FAF6ED`, em two-tone: D creme + balança ouro. Ícone: tile navy. Sobre claro: tile + wordmark navy. Sobre navy: sem tile, direto no fundo, wordmark creme.
 
 **Regras.**
 - Área de proteção: metade da altura do símbolo em todos os lados.
 - Tamanho mínimo: símbolo 16 px; assinatura horizontal 120 px de largura.
 - Wordmark sempre em minúsculas: **dikeon**.
 - Não rotacionar, não aplicar gradiente ou sombra, não mudar a cor do pingo do i, não usar o símbolo sem o tile sobre fundos com ruído visual.
-- Nunca usar balança ilustrada, martelo de juiz ou deusa da justiça como apoio gráfico. O clichê jurídico é o que a marca evita; o equilíbrio já está abstraído no símbolo.
+- Nunca usar balança realista (com sombra, volume ou correntes), martelo de juiz ou deusa da justiça como apoio gráfico. A balança da marca é só a do símbolo: flat, geométrica, em equilíbrio.
+- Tamanhos abaixo de 24 px: a balança vira textura e o D carrega a leitura; é o comportamento esperado, não usar versão simplificada.
 
 ---
 
