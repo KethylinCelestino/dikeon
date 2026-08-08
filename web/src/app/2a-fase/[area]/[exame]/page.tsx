@@ -36,6 +36,9 @@ export default async function ProvaPage({ params }: Props) {
   if (!prova) notFound();
 
   const nome = nomeArea(area);
+  // A correção assistida depende da chave da Anthropic; sem ela a página
+  // segue servindo para ler enunciado e padrão.
+  const correcaoAtiva = Boolean(process.env.ANTHROPIC_API_KEY);
   const dataBr = prova.data
     ? new Date(`${prova.data}T12:00:00`).toLocaleDateString("pt-BR")
     : null;
@@ -55,13 +58,19 @@ export default async function ProvaPage({ params }: Props) {
         </h1>
         <p className="mt-2 max-w-leitura text-muted">
           Prova prático-profissional{dataBr ? `, aplicada em ${dataBr}` : ""}.
-          Leia o caso e redija sua resposta antes de abrir o padrão da banca —
-          é escrevendo que esta prova se aprende.
+          {correcaoAtiva
+            ? " Redija sua resposta, peça a correção e só então compare com o padrão da banca."
+            : " Leia o caso e redija sua resposta antes de abrir o padrão da banca."}
         </p>
       </div>
 
       {prova.peca && (
-        <Padrao secao={prova.peca} titulo="Peça prático-profissional" />
+        <Padrao
+          secao={prova.peca}
+          titulo="Peça prático-profissional"
+          chave={`${area}-${exame}-peca`}
+          correcaoAtiva={correcaoAtiva}
+        />
       )}
 
       {prova.questoes.map((q) => (
@@ -69,6 +78,8 @@ export default async function ProvaPage({ params }: Props) {
           key={q.numero}
           secao={q}
           titulo={`Questão discursiva ${q.numero}`}
+          chave={`${area}-${exame}-q${q.numero}`}
+          correcaoAtiva={correcaoAtiva}
         />
       ))}
 
