@@ -72,8 +72,25 @@ sem essa separação o JSON inteiro ia para o bundle do navegador (1,43 MB → 1
 
 ## Deploy Vercel
 
-`vercel.json` na raiz aponta o build para `web/`. Variáveis necessárias: nenhuma
-por enquanto (Fase 1 guarda progresso no localStorage).
+Na importação do projeto, definir **Root Directory = `web`**. Com isso a Vercel
+detecta Next.js e pnpm sozinha, sem `vercel.json`.
+
+Depois de conectado ao GitHub, todo push na `main` vira deploy de produção e
+todo push em outra branch vira uma preview URL. Não há o que configurar além do
+Root Directory.
+
+Variáveis de ambiente necessárias: nenhuma por enquanto (a Fase 1 guarda
+progresso no localStorage).
+
+### O que fica fora do Git
+
+`content/` (705 MB de PDFs da OAB) e `graduacao/` (65 MB de anotações) estão no
+`.gitignore`. O build não precisa deles — o pipeline já produziu
+`web/data/questions.json`, que é versionado, junto com `questions_raw.json`,
+que permite re-rodar a classificação sem os PDFs.
+
+Os PDFs originais existem só na máquina do Andries. São rebaixáveis de
+examedeordem.oab.org.br, mas vale manter uma cópia no Google Drive.
 
 ## Próximos passos
 
