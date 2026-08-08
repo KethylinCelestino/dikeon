@@ -1,0 +1,333 @@
+{
+  "exame": "Exame de Ordem Unificado (OAB) - 1a fase",
+  "total_questoes": 80,
+  "corte": 40,
+  "materias": [
+    {
+      "id": "etica",
+      "nome": "Ética Profissional e Estatuto da OAB",
+      "questoes_tipicas": 8,
+      "temas": [
+        "Atividade de advocacia e exercício profissional",
+        "Direitos e prerrogativas do advogado",
+        "Incompatibilidades e impedimentos",
+        "Sociedade de advogados",
+        "Advogado empregado",
+        "Honorários advocatícios",
+        "Inscrição na OAB e estágio",
+        "Infrações e sanções disciplinares",
+        "Processo disciplinar",
+        "Órgãos e estrutura da OAB",
+        "Código de Ética e Disciplina",
+        "Publicidade na advocacia",
+        "Sigilo profissional",
+        "Deveres do advogado e relação com o cliente",
+        "Mediação e conciliação pelo advogado"
+      ]
+    },
+    {
+      "id": "filosofia",
+      "nome": "Filosofia do Direito",
+      "questoes_tipicas": 2,
+      "temas": [
+        "Jusnaturalismo e positivismo jurídico",
+        "Teoria da justiça",
+        "Hermenêutica e argumentação jurídica",
+        "Filosofia política e contratualismo",
+        "Direito e moral",
+        "Pensadores clássicos e contemporâneos"
+      ]
+    },
+    {
+      "id": "constitucional",
+      "nome": "Direito Constitucional",
+      "questoes_tipicas": 8,
+      "temas": [
+        "Teoria da constituição e poder constituinte",
+        "Direitos e garantias fundamentais",
+        "Remédios constitucionais",
+        "Direitos sociais e nacionalidade",
+        "Direitos políticos e partidos",
+        "Organização do Estado e federação",
+        "Repartição de competências",
+        "Administração pública na Constituição",
+        "Poder Legislativo e processo legislativo",
+        "Poder Executivo",
+        "Poder Judiciário",
+        "Funções essenciais à Justiça",
+        "Controle de constitucionalidade",
+        "Ordem social e ordem econômica",
+        "Defesa do Estado e das instituições democráticas"
+      ]
+    },
+    {
+      "id": "direitos-humanos",
+      "nome": "Direitos Humanos",
+      "questoes_tipicas": 3,
+      "temas": [
+        "Sistema global de proteção (ONU)",
+        "Sistema interamericano e Corte IDH",
+        "Tratados de direitos humanos e incorporação",
+        "Grupos vulneráveis e não discriminação",
+        "Direitos da pessoa com deficiência",
+        "Igualdade racial e de gênero"
+      ]
+    },
+    {
+      "id": "internacional",
+      "nome": "Direito Internacional",
+      "questoes_tipicas": 2,
+      "temas": [
+        "Fontes do direito internacional público",
+        "Tratados internacionais",
+        "Organizações internacionais e integração regional",
+        "Nacionalidade e condição do estrangeiro",
+        "Direito internacional privado e conflito de leis",
+        "Cooperação jurídica internacional e homologação de sentença",
+        "Contratos internacionais e arbitragem"
+      ]
+    },
+    {
+      "id": "tributario",
+      "nome": "Direito Tributário",
+      "questoes_tipicas": 5,
+      "temas": [
+        "Sistema tributário nacional e competência",
+        "Princípios e limitações ao poder de tributar",
+        "Imunidades tributárias",
+        "Espécies tributárias",
+        "Obrigação tributária e fato gerador",
+        "Responsabilidade tributária",
+        "Crédito tributário e lançamento",
+        "Suspensão, extinção e exclusão do crédito",
+        "Administração tributária e garantias",
+        "Impostos em espécie",
+        "Processo tributário e execução fiscal"
+      ]
+    },
+    {
+      "id": "administrativo",
+      "nome": "Direito Administrativo",
+      "questoes_tipicas": 6,
+      "temas": [
+        "Princípios da administração pública",
+        "Organização administrativa",
+        "Atos administrativos",
+        "Poderes administrativos",
+        "Licitações e contratos administrativos",
+        "Serviços públicos e concessões",
+        "Servidores públicos",
+        "Bens públicos",
+        "Intervenção do Estado na propriedade",
+        "Responsabilidade civil do Estado",
+        "Controle da administração",
+        "Improbidade administrativa",
+        "Processo administrativo"
+      ]
+    },
+    {
+      "id": "ambiental",
+      "nome": "Direito Ambiental",
+      "questoes_tipicas": 2,
+      "temas": [
+        "Princípios do direito ambiental",
+        "Política Nacional do Meio Ambiente e SISNAMA",
+        "Licenciamento ambiental e estudo de impacto",
+        "Responsabilidade ambiental civil, penal e administrativa",
+        "Código Florestal, APP e reserva legal",
+        "Unidades de conservação",
+        "Competências ambientais"
+      ]
+    },
+    {
+      "id": "civil",
+      "nome": "Direito Civil",
+      "questoes_tipicas": 7,
+      "temas": [
+        "Lei de Introdução às Normas do Direito Brasileiro",
+        "Pessoas naturais e capacidade",
+        "Pessoas jurídicas e desconsideração",
+        "Bens",
+        "Negócio jurídico, defeitos e invalidade",
+        "Prescrição e decadência",
+        "Obrigações",
+        "Responsabilidade civil",
+        "Contratos em geral",
+        "Contratos em espécie",
+        "Direitos reais e posse",
+        "Propriedade e usucapião",
+        "Direito de família",
+        "Direito das sucessões",
+        "Direitos da personalidade"
+      ]
+    },
+    {
+      "id": "consumidor",
+      "nome": "Direito do Consumidor",
+      "questoes_tipicas": 2,
+      "temas": [
+        "Relação de consumo e conceitos",
+        "Direitos básicos do consumidor",
+        "Responsabilidade por vício do produto ou serviço",
+        "Responsabilidade pelo fato do produto ou serviço",
+        "Práticas comerciais e publicidade",
+        "Cláusulas abusivas e contratos de consumo",
+        "Proteção contratual e desistência",
+        "Defesa do consumidor em juízo",
+        "Superendividamento",
+        "Sanções administrativas e infrações penais"
+      ]
+    },
+    {
+      "id": "eca",
+      "nome": "Estatuto da Criança e do Adolescente",
+      "questoes_tipicas": 2,
+      "temas": [
+        "Direitos fundamentais da criança e do adolescente",
+        "Proteção integral e prioridade absoluta",
+        "Família natural, extensa e substituta",
+        "Guarda, tutela e adoção",
+        "Ato infracional e medidas socioeducativas",
+        "Medidas de proteção",
+        "Conselho Tutelar e política de atendimento",
+        "Acesso à Justiça e crimes previstos no ECA"
+      ]
+    },
+    {
+      "id": "empresarial",
+      "nome": "Direito Empresarial",
+      "questoes_tipicas": 5,
+      "temas": [
+        "Teoria da empresa e empresário",
+        "Registro, nome empresarial e estabelecimento",
+        "Sociedades em geral e tipos societários",
+        "Sociedade limitada",
+        "Sociedade anônima",
+        "Títulos de crédito",
+        "Falência",
+        "Recuperação judicial e extrajudicial",
+        "Propriedade industrial",
+        "Contratos empresariais"
+      ]
+    },
+    {
+      "id": "processo-civil",
+      "nome": "Direito Processual Civil",
+      "questoes_tipicas": 7,
+      "temas": [
+        "Normas fundamentais do processo civil",
+        "Jurisdição e competência",
+        "Partes, litisconsórcio e intervenção de terceiros",
+        "Atos processuais e prazos",
+        "Tutela provisória",
+        "Petição inicial e resposta do réu",
+        "Provas",
+        "Sentença e coisa julgada",
+        "Recursos",
+        "Cumprimento de sentença",
+        "Execução",
+        "Procedimentos especiais",
+        "Juizados Especiais Cíveis",
+        "Honorários e gratuidade da justiça"
+      ]
+    },
+    {
+      "id": "penal",
+      "nome": "Direito Penal",
+      "questoes_tipicas": 6,
+      "temas": [
+        "Aplicação da lei penal",
+        "Teoria do crime e tipicidade",
+        "Excludentes de ilicitude e culpabilidade",
+        "Concurso de pessoas",
+        "Concurso de crimes",
+        "Penas e aplicação da pena",
+        "Medidas de segurança e sursis",
+        "Extinção da punibilidade e prescrição",
+        "Crimes contra a pessoa",
+        "Crimes contra o patrimônio",
+        "Crimes contra a dignidade sexual",
+        "Crimes contra a administração pública",
+        "Crimes contra a fé pública",
+        "Legislação penal especial",
+        "Lei de Drogas",
+        "Lei Maria da Penha",
+        "Juizados Especiais Criminais e Lei 9.099"
+      ]
+    },
+    {
+      "id": "processo-penal",
+      "nome": "Direito Processual Penal",
+      "questoes_tipicas": 5,
+      "temas": [
+        "Princípios e sistemas processuais penais",
+        "Inquérito policial",
+        "Ação penal",
+        "Competência",
+        "Provas no processo penal",
+        "Prisões e medidas cautelares",
+        "Liberdade provisória e fiança",
+        "Procedimentos e rito do júri",
+        "Sentença penal e nulidades",
+        "Recursos no processo penal",
+        "Habeas corpus e revisão criminal",
+        "Execução penal"
+      ]
+    },
+    {
+      "id": "trabalho",
+      "nome": "Direito do Trabalho",
+      "questoes_tipicas": 6,
+      "temas": [
+        "Princípios e fontes do direito do trabalho",
+        "Relação de emprego e requisitos",
+        "Contrato de trabalho e alteração",
+        "Jornada de trabalho e intervalos",
+        "Remuneração e salário",
+        "Férias e 13º salário",
+        "FGTS",
+        "Suspensão e interrupção do contrato",
+        "Rescisão contratual e verbas",
+        "Estabilidade e garantias de emprego",
+        "Trabalho da mulher, do menor e do doméstico",
+        "Terceirização e grupo econômico",
+        "Segurança e medicina do trabalho, insalubridade e periculosidade",
+        "Direito coletivo do trabalho e negociação",
+        "Prescrição trabalhista"
+      ]
+    },
+    {
+      "id": "processo-trabalho",
+      "nome": "Direito Processual do Trabalho",
+      "questoes_tipicas": 5,
+      "temas": [
+        "Organização da Justiça do Trabalho e competência",
+        "Partes, representação e jus postulandi",
+        "Atos, prazos e nulidades processuais",
+        "Reclamação trabalhista e petição inicial",
+        "Audiência, defesa e revelia",
+        "Provas no processo do trabalho",
+        "Sentença e coisa julgada",
+        "Recursos trabalhistas",
+        "Execução trabalhista",
+        "Procedimento sumaríssimo",
+        "Custas, honorários e justiça gratuita",
+        "Ações especiais e dissídio coletivo"
+      ]
+    },
+    {
+      "id": "previdenciario",
+      "nome": "Direito Previdenciário",
+      "questoes_tipicas": 1,
+      "temas": [
+        "Seguridade social e princípios",
+        "Segurados e dependentes",
+        "Custeio e contribuições",
+        "Benefícios previdenciários",
+        "Aposentadorias e regras de transição",
+        "Benefícios por incapacidade",
+        "Benefício assistencial (BPC/LOAS)"
+      ]
+    }
+  ]
+}

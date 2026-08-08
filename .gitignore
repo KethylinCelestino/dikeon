@@ -1,0 +1,19 @@
+# Fontes pesadas: 705 MB de PDFs da OAB e 65 MB de anotações. Nada disso é
+# necessário para o build (o pipeline já produziu web/data/questions.json, que
+# é versionado). Os PDFs são rebaixáveis de examedeordem.oab.org.br.
+content/
+graduacao/
+
+# Segredos
+.env
+.env.local
+
+# Dependências e artefatos
+.venv/
+__pycache__/
+node_modules/
+.next/
+.vercel/
+*.tsbuildinfo
+
+.DS_Store
