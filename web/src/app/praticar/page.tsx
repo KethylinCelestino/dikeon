@@ -42,7 +42,7 @@ export default async function Praticar({ searchParams }: Props) {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="font-serif text-3xl font-bold">Praticar</h1>
+        <h1 className="font-serif text-3xl font-semibold">Praticar</h1>
         <p className="mt-2 text-muted">
           Escolha uma matéria. Cada sessão traz {TAMANHO_SESSAO} questões com
           correção na hora.
@@ -54,7 +54,7 @@ export default async function Praticar({ searchParams }: Props) {
           <Link
             key={m.id}
             href={`/praticar?materia=${m.id}`}
-            className="card flex items-center justify-between transition hover:border-navy/30 dark:hover:border-gold/40"
+            className="card flex items-center justify-between transition hover:border-bordo/30 dark:hover:border-cream/30"
           >
             <div>
               <p className="font-medium">{m.nome}</p>

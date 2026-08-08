@@ -61,7 +61,7 @@ export function Runner({ questoes, titulo, seed, tamanho }: Props) {
     return (
       <div className="card text-center">
         <p className="eyebrow">Sessão concluída</p>
-        <p className="mt-3 font-serif text-5xl font-bold">{pct}%</p>
+        <p className="mt-3 tnum font-serif text-5xl font-semibold">{pct}%</p>
         <p className="mt-2 text-muted">
           {acertos} de {ordem.length} corretas
         </p>
@@ -81,12 +81,12 @@ export function Runner({ questoes, titulo, seed, tamanho }: Props) {
     <div className="space-y-5">
       <div>
         <div className="flex items-baseline justify-between">
-          <h1 className="font-serif text-2xl font-bold">{titulo}</h1>
+          <h1 className="font-serif text-2xl font-semibold">{titulo}</h1>
           <span className="text-sm text-muted">
             {acertos}/{respondidas} corretas
           </span>
         </div>
-        <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-navy/10 dark:bg-white/10">
+        <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-bordo/10 dark:bg-white/10">
           <div
             className="h-full rounded-full bg-gold transition-all"
             style={{ width: `${(respondidas / ordem.length) * 100}%` }}

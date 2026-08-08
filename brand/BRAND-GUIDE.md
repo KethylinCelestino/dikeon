@@ -1,8 +1,8 @@
 # Dikeon: Brand & Design Guide
 
-**Versão 1.0 · Agosto 2026 · dikeon.com.br**
+**Versão 2.0 · Agosto 2026 · dikeon.com.br**
 
-Guia canônico de marca e design do Dikeon. Consolida a identidade herdada do mockup ZEL, corrigida e sistematizada a partir de pesquisa de melhores práticas em educação jurídica, edtech e legibilidade (fontes no final).
+Guia canônico de marca e design do Dikeon, sistematizado a partir de pesquisa de melhores práticas em educação jurídica, edtech e legibilidade (fontes no final). A v2.0 adota o bordô como cor de marca e o pilar como símbolo.
 
 ---
 
@@ -14,11 +14,12 @@ Guia canônico de marca e design do Dikeon. Consolida a identidade herdada do mo
 
 **Posicionamento em uma frase.** *Seriedade que aprova, leveza que faz você voltar amanhã.*
 
-**A tensão central da marca.** Pesquisa de branding jurídico pede navy, serifa e sobriedade (autoridade, confiança). Pesquisa de edtech pede sessões curtas, gamificação e cores que reduzem ansiedade (Duolingo como referência dominante). O Dikeon resolve a tensão assim:
+**A tensão central da marca.** Pesquisa de branding jurídico pede sobriedade e tradição; pesquisa de edtech pede sessões curtas, gamificação e cores que reduzem ansiedade (Duolingo como referência dominante). O Dikeon resolve a tensão assim:
 
-- **A base é jurídica:** navy profundo, serifa nos títulos, tom respeitoso com o conteúdo.
+- **A base é jurídica:** bordô profundo, serifa nos títulos, tom respeitoso com o conteúdo.
 - **A energia é de estudo diário:** ouro para conquista e progresso, microinterações, feedback imediato, zero solenidade no tom.
-- O concorrente brasileiro típico (QConcursos, Gran) parece ferramenta de banco de dados; o Dikeon deve parecer um produto desenhado, com o acabamento de um Quimbee.
+- **Bordô, não azul.** Cerca de 45% das marcas jurídicas usam azul; QConcursos, Gran e afins também. O bordô é a segunda cor clássica do Direito (livros de doutrina, becas, bibliotecas) e nos diferencia de todo o resto da categoria de uma vez.
+- O concorrente brasileiro típico parece ferramenta de banco de dados; o Dikeon deve parecer um produto desenhado, com o acabamento de um Quimbee.
 
 **Personalidade.** Preparado, direto, encorajador, nunca pomposo. A Zel fala como uma monitora que já passou na prova: explica com fundamento legal ("art. X da Lei Y") mas em linguagem de revisão, não de doutrina.
 
@@ -38,36 +39,38 @@ Arquivos em `brand/logo/`:
 |---|---|
 | `dikeon-icon.svg` | Símbolo: app icon, favicon, avatar, espaços quadrados |
 | `dikeon-logo-horizontal.svg` | Assinatura principal sobre fundos claros |
-| `dikeon-logo-horizontal-dark.svg` | Assinatura sobre navy / dark mode |
+| `dikeon-logo-horizontal-dark.svg` | Assinatura sobre bordô / dark mode |
 | `dikeon-icon-mono.svg` | Monocromático (carimbo, impressão, watermark) |
 
-**Conceito.** Monograma **D** em traço geométrico segurando uma **balança clássica em traço flat no contraforma**: pivô em anel, trave curva, pratos e coluna vivem no vazio interno da letra. O D é a moldura; a balança é o conteúdo. No wordmark, o pingo do "i" é dourado: o **ponto de equilíbrio**, que o produto reutiliza como marcador de progresso, notificação e XP.
+Explorações arquivadas: `dikeon-icon-livros.svg`, `-martelo.svg`, `-balanca.svg`, `-pilar.svg` (a versão pilar evoluiu para o definitivo).
 
-**Cores do logo.** Somente navy `#0C1F3C`, ouro `#E2B84A` e creme `#FAF6ED`, em two-tone: D creme + balança ouro. Ícone: tile navy. Sobre claro: tile + wordmark navy. Sobre navy: sem tile, direto no fundo, wordmark creme.
+**Conceito: a coluna-D.** O pilar clássico (capitel, fuste com caneluras, base) **é a própria haste do D**; o arco da letra é um crescente serifado que nasce por trás da coluna. Pilar = o Direito como instituição e o estudo como construção, uma coluna por dia. Letra e símbolo são a mesma coisa: sem elementos competindo. No wordmark, o pingo do "i" é dourado: o **ponto de equilíbrio**, que o produto reutiliza como marcador de progresso, notificação e XP.
+
+**Cores do logo.** Tile bordô (gradiente `#5C2129` → `#330E13`), coluna-D em creme, brilho sutil no topo e sombra suave (acabamento de app icon). Wordmark bordô `#4A1420` sobre claro, creme sobre escuro; pingo do i sempre ouro `#E2B84A`.
 
 **Regras.**
 - Área de proteção: metade da altura do símbolo em todos os lados.
 - Tamanho mínimo: símbolo 16 px; assinatura horizontal 120 px de largura.
 - Wordmark sempre em minúsculas: **dikeon**.
-- Não rotacionar, não aplicar gradiente ou sombra, não mudar a cor do pingo do i, não usar o símbolo sem o tile sobre fundos com ruído visual.
-- Nunca usar balança realista (com sombra, volume ou correntes), martelo de juiz ou deusa da justiça como apoio gráfico. A balança da marca é só a do símbolo: flat, geométrica, em equilíbrio.
-- Tamanhos abaixo de 24 px: a balança vira textura e o D carrega a leitura; é o comportamento esperado, não usar versão simplificada.
+- Não rotacionar, não mudar a cor do pingo do i, não recolorir a coluna, não usar o símbolo sem o tile sobre fundos com ruído visual (a versão sem tile é só para fundos bordô/escuros limpos).
+- O pilar é o único símbolo da marca. Nunca usar balança, martelo de juiz ou deusa da justiça como apoio gráfico.
+- Abaixo de 24 px as caneluras somem e o D carrega a leitura; é o comportamento esperado, não usar versão simplificada.
 
 ---
 
 ## 3. Cor
 
-A paleta segue a norma do setor jurídico (navy dominante, 2 a 3 cores, acento quente) e adiciona a camada semântica que um produto de questões exige.
+Paleta de 3 cores núcleo (bordô, creme, ouro) mais neutros quentes, seguindo a norma do setor (2 a 3 cores, acento quente) e fugindo do azul dominante da categoria.
 
 ### 3.1 Paleta núcleo
 
 | Token | Hex | Papel |
 |---|---|---|
-| `navy` | `#0C1F3C` | Cor da marca. Fundos escuros, texto de destaque, botão primário no claro |
-| `royal` | `#1F3A5F` | Hover do navy, superfícies elevadas no dark |
-| `ink` | `#17253B` | Texto padrão sobre claro |
-| `muted` | `#738096` | Texto secundário, metadados |
-| `line` | `#E5E9EF` | Bordas, divisores |
+| `bordo` | `#4A1420` | Cor da marca. Fundos escuros, texto de destaque, botão primário no claro |
+| `bordo-hover` | `#63202E` | Hover do bordô, superfícies elevadas no dark |
+| `ink` | `#2B191E` | Texto padrão sobre claro (quase-preto quente) |
+| `muted` | `#8B7378` | Texto secundário, metadados |
+| `line` | `#EBE2DE` | Bordas, divisores |
 | `cream` | `#FAF6ED` | Fundo padrão do modo claro (papel, não branco puro) |
 | `white` | `#FFFFFF` | Superfície de cards sobre cream |
 | `gold` | `#E2B84A` | Acento: conquista, XP, streak, CTA no dark |
@@ -75,31 +78,31 @@ A paleta segue a norma do setor jurídico (navy dominante, 2 a 3 cores, acento q
 
 ### 3.2 Cores semânticas (o coração do produto)
 
-Responder questões é a interação central; acerto e erro precisam de identidade fixa e consistente em todo o app:
+Responder questões é a interação central; acerto e erro precisam de identidade fixa e consistente em todo o app. Com o bordô virando cor de marca, o erro usa um carmim mais claro e vivo, sempre distinguível do bordô institucional:
 
 | Token | Hex | Fundo-tint | Uso |
 |---|---|---|---|
 | `success` | `#1C8C70` | `#EAF8F3` | Alternativa correta, acerto, meta batida |
-| `error` | `#7A1F3D` | `#FFF0F3` | Alternativa errada. Vinho, não vermelho-alarme: errar faz parte do método |
+| `error` | `#B02A37` | `#FDECEE` | Alternativa errada. Carmim, não vermelho-alarme puro: errar faz parte do método |
 | `warning` | `#8A5A0F` | `#FFF7DF` | Questão desatualizada/anulada, avisos de vigência |
-| `info` | `#1F3A5F` | `#EDF2F8` | Dica da Zel, notas neutras |
+| `info` | `#63202E` | `#F8EEEC` | Dica da Zel, notas neutras |
 
-Para texto sobre fundo claro, usar `success-text #157059`. Erro em vinho é decisão de marca: pesquisa de edtech mostra que cor reduz ou amplifica ansiedade; vermelho puro pune, vinho corrige.
+Para texto sobre fundo claro, usar `success-text #157059`. Regra de desambiguação: bordô aparece em navegação, botões e títulos; carmim de erro só aparece em feedback de resposta e validação, sempre com tint + ícone + texto.
 
 ### 3.3 Regras de contraste (WCAG AA)
 
-- Texto corrido: mínimo 4.5:1. `ink` sobre `cream` e `cream` sobre `navy` passam com folga.
-- **Ouro `#E2B84A` nunca é cor de texto sobre fundo claro** (contraste ~2:1, reprova). Sobre claro, ouro só em preenchimentos, badges e ícones, com texto em `navy`; para texto dourado, usar `gold-text`.
-- Ouro sobre navy passa AA e é a combinação de destaque da marca.
+- Texto corrido: mínimo 4.5:1. `ink` sobre `cream` e `cream` sobre `bordo` passam com folga.
+- **Ouro `#E2B84A` nunca é cor de texto sobre fundo claro** (contraste ~2:1, reprova). Sobre claro, ouro só em preenchimentos, badges e ícones, com texto em `bordo`; para texto dourado, usar `gold-text`.
+- Ouro sobre bordô passa AA e é a combinação de destaque da marca.
 - `muted` só para texto ≥14 px; nunca para informação essencial.
 
 ### 3.4 Dark mode
 
 Dark mode é primário (estudo à noite é o caso de uso real), não um tema derivado:
 
-- Fundo `navy #0C1F3C`, superfícies `white/5` com borda `white/10`, texto `cream`.
-- Botão primário vira **ouro com texto navy** (já implementado no app).
-- Tints semânticos viram a cor a 12-15% de opacidade sobre o navy, com o texto na versão clara da cor (`#4ECBA5` para success, `#E58BA6` para error).
+- Fundo bordô-escuro `#2A0D13`, superfícies `white/5` com borda `white/10`, texto `cream`.
+- Botão primário vira **ouro com texto bordô**.
+- Tints semânticos viram a cor a 12-15% de opacidade sobre o fundo, com o texto na versão clara da cor (`#4ECBA5` para success, `#F09AA3` para error).
 
 ---
 
@@ -107,7 +110,7 @@ Dark mode é primário (estudo à noite é o caso de uso real), não um tema der
 
 **Par tipográfico: Lora (display) + Inter (UI e leitura).**
 
-- **Lora** (Google Fonts, variable): títulos, números de destaque, wordmark de apoio. Serifa contemporânea com DNA de livro jurídico; substitui a Georgia atual, que é fallback de sistema sem personalidade própria. Georgia permanece como fallback na stack.
+- **Lora** (Google Fonts, variable): títulos, números de destaque, wordmark de apoio. Serifa contemporânea com DNA de livro jurídico; substitui a Georgia atual, que permanece como fallback na stack.
 - **Inter** (já em uso): todo o resto. UI, corpo de questão, botões, tabelas. Usar `font-feature-settings: "tnum"` em placares, timers e rankings.
 
 ### Escala
@@ -138,9 +141,9 @@ Enunciado de questão da FGV é texto denso; as regras de legibilidade são requ
 
 - **Grid de espaçamento 4 pt.** Padding padrão de card: 20 px (`p-5`, atual, manter).
 - **Raio:** cards `rounded-2xl` (16 px), botões e inputs `rounded-xl` (12 px), badges `rounded-full`. O tile do logo usa a mesma linguagem (raio ~22%).
-- **Sombra:** apenas a `shadow-card` atual sobre claro; no dark, sem sombra, elevação por borda e opacidade (já implementado).
+- **Sombra:** apenas a `shadow-card` sobre claro (recolorida para o bordô: `0 18px 50px rgba(74,20,32,.10)`); no dark, sem sombra, elevação por borda e opacidade.
 - **Superfícies:** cream de fundo + cards brancos. Nunca branco puro como fundo de página; nunca cinza neutro (o calor do creme é assinatura da marca).
-- **Botões:** primário navy→cream (claro) e gold→navy (escuro); ghost com borda `line`. Um único CTA primário por tela.
+- **Botões:** primário bordô→cream (claro) e gold→bordô (escuro); ghost com borda `line`. Um único CTA primário por tela.
 - **Ícones:** traço 1.5-2 px, cantos arredondados (Lucide serve como base), nunca preenchimento sólido exceto estados ativos.
 - **Densidade:** uma decisão por tela. A tela de questão mostra: enunciado, alternativas, um CTA. Progresso, XP e navegação ficam na moldura, nunca competindo com a leitura.
 
@@ -163,7 +166,7 @@ Gamificação entra na Fase 3, mas as regras visuais ficam definidas desde já:
 - Contraste AA em todos os pares de texto (seção 3.3).
 - Fonte base 16 px+; zoom a 200% sem quebra de layout.
 - Alvos de toque ≥44 px (alternativas de questão são botões grandes, não radio buttons pequenos).
-- Estado de foco visível (anel `royal` no claro, `gold` no escuro).
+- Estado de foco visível (anel `bordo-hover` no claro, `gold` no escuro).
 - Acerto/erro nunca comunicado só por cor: sempre cor + ícone + texto.
 - `prefers-reduced-motion` respeitado em toda animação.
 
@@ -171,43 +174,44 @@ Gamificação entra na Fase 3, mas as regras visuais ficam definidas desde já:
 
 ## 8. Aplicação no app atual
 
-Diff sugerido para `web/tailwind.config.ts` (mantém tokens atuais, adiciona a camada que falta):
+Diff sugerido para `web/tailwind.config.ts` (substitui a paleta navy herdada do ZEL):
 
 ```ts
 colors: {
-  navy: "#0c1f3c",
-  royal: "#1f3a5f",
+  bordo: { DEFAULT: "#4a1420", hover: "#63202e", deep: "#2a0d13" },
   gold: "#e2b84a",
   "gold-text": "#7e611c",
   cream: "#faf6ed",
-  ink: "#17253b",
-  muted: "#738096",
-  line: "#e5e9ef",
-  wine: "#7a1f3d",      // manter como alias de error
-  green: "#1c8c70",     // manter como alias de success
+  ink: "#2b191e",
+  muted: "#8b7378",
+  line: "#ebe2de",
   success: { DEFAULT: "#1c8c70", text: "#157059", tint: "#eaf8f3" },
-  error:   { DEFAULT: "#7a1f3d", tint: "#fff0f3" },
+  error:   { DEFAULT: "#b02a37", tint: "#fdecee" },
   warning: { DEFAULT: "#8a5a0f", tint: "#fff7df" },
-  info:    { DEFAULT: "#1f3a5f", tint: "#edf2f8" },
+  info:    { DEFAULT: "#63202e", tint: "#f8eeec" },
 },
 fontFamily: {
   sans: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "sans-serif"],
   serif: ["Lora", "Georgia", "ui-serif", "serif"],  // carregar Lora via next/font
 },
+boxShadow: {
+  card: "0 18px 50px rgba(74,20,32,.10)",
+},
 ```
 
 Backlog de aplicação:
-1. Carregar Lora via `next/font/google` e aplicar em h1/h2 e números de destaque.
-2. Trocar cores hard-coded de acerto/erro pelos tokens semânticos em `QuestionCard` e nos Runners.
-3. Aplicar `max-w-[68ch]` e `text-[17px] leading-[1.65]` no enunciado.
-4. Usar `dikeon-icon.svg` como favicon/app icon e a assinatura horizontal no header.
-5. Badge de "questão desatualizada" com o par warning definido acima.
+1. Trocar a paleta navy pelos tokens bordô acima em `tailwind.config.ts` e `globals.css` (body, .card, .btn-primary, .btn-ghost; dark mode: fundo `bordo-deep`, CTA gold).
+2. Carregar Lora via `next/font/google` e aplicar em h1/h2 e números de destaque.
+3. Tokens semânticos (success/error/warning) no lugar de cores soltas em `QuestionCard` e nos Runners.
+4. Enunciado a 17 px / 1.65 / máx 68ch no `QuestionCard`.
+5. Favicon e header com o novo logo (`dikeon-icon.svg` + assinatura horizontal).
+6. Badge de "questão desatualizada" com o par warning.
 
 ---
 
 ## 9. Fontes da pesquisa
 
-- Branding jurídico 2026 (navy dominante, 2-3 cores, serif = tradição, tipografia grande e sóbria): [Rankings.io](https://rankings.io/blog/law-firm-logos/), [OnTheMap](https://www.onthemap.com/blog/law-firm-logos/), [PaperStreet](https://www.paperstreet.com/blog/2026-law-firm-website-design-trends/), [Grow Law](https://growlaw.co/blog/best-law-firm-logo-designs)
+- Branding jurídico 2026 (paletas restritas com azul, preto, cinza e **burgundy**; serif = tradição, tipografia grande e sóbria): [Rankings.io](https://rankings.io/blog/law-firm-logos/), [OnTheMap](https://www.onthemap.com/blog/law-firm-logos/), [PaperStreet](https://www.paperstreet.com/blog/2026-law-firm-website-design-trends/), [Grow Law](https://growlaw.co/blog/best-law-firm-logo-designs)
 - Web design para legal tech e faculdades de direito (clareza, rotas por audiência, ícones para conceitos complexos): [Insivia](https://www.insivia.com/best-practices-for-legal-tech-website-design/), [OHO](https://www.oho.com/blog/law-school-website-examples), [KrishaWeb](https://www.krishaweb.com/blog/best-legal-website-design-examples/)
 - Edtech e gamificação (Duolingo como referência, sessões curtas, cor e microinteração contra ansiedade, continuidade entre dispositivos): [Merge](https://merge.rocks/blog/7-best-designed-edtech-platforms-weve-seen-so-far), [Lollypop](https://lollypop.design/blog/2025/august/top-education-app-design-trends-2025/), [NetBramha](https://netbramha.com/blogs/gamification-in-edtech-ux-design/), [PolyChat](https://www.polychatapp.com/blog/gamification-examples-in-education)
 - Bar prep de referência em UX (Quimbee: practice-first, interface limpa; Themis: inovação): [Quimbee](https://www.quimbee.com/bar-review/compare), [Test Prep Insight](https://testprepinsight.com/comparisons/quimbee-vs-barbri/)

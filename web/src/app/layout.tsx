@@ -1,10 +1,27 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { Inter, Lora } from "next/font/google";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { SITE_NAME, SITE_TAGLINE, SITE_URL, DEFAULT_DESCRIPTION } from "@/lib/seo";
 
-// Roda antes da hidratacao para o modo escuro nao piscar branco no carregamento.
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+// Serifa contemporânea com DNA de livro jurídico; substitui a Georgia, que
+// segue como fallback na stack.
+const lora = Lora({
+  subsets: ["latin"],
+  weight: ["600"],
+  variable: "--font-lora",
+  display: "swap",
+});
+
+// Roda antes da hidratacao para o modo escuro nao piscar claro no carregamento.
 const THEME_INIT = `
 (function(){try{
   var s=localStorage.getItem('theme');
@@ -18,6 +35,7 @@ export const metadata: Metadata = {
   title: { default: `${SITE_NAME} — ${SITE_TAGLINE}`, template: `%s · ${SITE_NAME}` },
   description: DEFAULT_DESCRIPTION,
   alternates: { canonical: "/" },
+  icons: { icon: "/dikeon-icon.svg", apple: "/dikeon-icon.svg" },
   openGraph: {
     type: "website",
     locale: "pt_BR",
@@ -38,19 +56,28 @@ const NAV = [
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
+    <html
+      lang="pt-BR"
+      suppressHydrationWarning
+      className={`${inter.variable} ${lora.variable}`}
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
       </head>
-      <body className="min-h-screen">
-        <header className="sticky top-0 z-40 border-b border-line bg-cream/85 backdrop-blur dark:border-white/10 dark:bg-navy/85">
+      <body className="min-h-screen font-sans">
+        <header className="sticky top-0 z-40 border-b border-line bg-cream/85 backdrop-blur dark:border-white/10 dark:bg-bordo-deep/85">
           <div className="mx-auto flex max-w-5xl items-center gap-4 px-4 py-3">
-            <Link href="/" className="flex items-center gap-2.5">
-              <span className="grid h-9 w-9 place-items-center rounded-xl bg-navy font-serif text-lg font-bold text-gold dark:bg-gold dark:text-navy">
-                D
-              </span>
-              <span className="font-serif text-lg font-bold tracking-tight">
-                Dikeon
+            <Link href="/" className="focavel flex items-center gap-2.5 rounded-xl">
+              <Image
+                src="/dikeon-icon.svg"
+                alt=""
+                width={36}
+                height={36}
+                priority
+                className="rounded-[8px]"
+              />
+              <span className="font-serif text-lg font-semibold tracking-tight">
+                dikeon
               </span>
             </Link>
             <nav className="ml-auto hidden items-center gap-1 sm:flex">
@@ -58,7 +85,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Link
                   key={n.href}
                   href={n.href}
-                  className="rounded-lg px-3 py-2 text-sm font-medium text-muted transition hover:bg-navy/5 hover:text-ink dark:hover:bg-white/10 dark:hover:text-cream"
+                  className="focavel rounded-lg px-3 py-2 text-sm font-medium text-muted transition hover:bg-bordo/5 hover:text-ink dark:hover:bg-white/10 dark:hover:text-cream"
                 >
                   {n.label}
                 </Link>
@@ -71,7 +98,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link
                 key={n.href}
                 href={n.href}
-                className="whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-medium text-muted"
+                className="focavel whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-medium text-muted"
               >
                 {n.label}
               </Link>

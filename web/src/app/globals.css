@@ -14,8 +14,14 @@ body {
   @apply bg-cream text-ink antialiased;
 }
 
+/* Dark mode é primário no guia: estudar à noite é o caso de uso real. */
 .dark body {
-  @apply bg-navy text-cream;
+  @apply bg-bordo-deep text-cream;
+}
+
+/* Placares, timers e rankings com dígitos de largura fixa para não "dançar". */
+.tnum {
+  font-feature-settings: "tnum";
 }
 
 @layer components {
@@ -34,15 +40,15 @@ body {
   }
 
   .btn-primary {
-    @apply btn bg-navy text-cream hover:bg-royal;
+    @apply btn bg-bordo text-cream hover:bg-bordo-hover;
   }
 
   .dark .btn-primary {
-    @apply bg-gold text-navy hover:bg-gold/90;
+    @apply bg-gold text-bordo hover:bg-gold/90;
   }
 
   .btn-ghost {
-    @apply btn border border-line bg-white text-ink hover:border-navy/30;
+    @apply btn border border-line bg-white text-ink hover:border-bordo/30;
   }
 
   .dark .btn-ghost {
@@ -51,5 +57,28 @@ body {
 
   .eyebrow {
     @apply text-[11px] font-semibold uppercase tracking-[0.14em] text-muted;
+  }
+
+  /* Foco visível em todo elemento interativo (seção 7 do guia). */
+  .focavel {
+    @apply focus-visible:outline-none focus-visible:ring-2
+           focus-visible:ring-bordo-hover focus-visible:ring-offset-2
+           focus-visible:ring-offset-cream;
+  }
+
+  .dark .focavel {
+    @apply focus-visible:ring-gold focus-visible:ring-offset-bordo-deep;
+  }
+}
+
+/* Nenhuma animação deve atrapalhar quem pediu movimento reduzido. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

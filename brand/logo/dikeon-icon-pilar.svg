@@ -1,0 +1,36 @@
+<svg width="96" height="96" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dikeon">
+<defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#17325C"/><stop offset="1" stop-color="#081526"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F3D178"/><stop offset=".55" stop-color="#E2B84A"/><stop offset="1" stop-color="#C0922E"/>
+    </linearGradient>
+    <linearGradient id="cream" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFCF4"/><stop offset="1" stop-color="#EDE2CB"/>
+    </linearGradient>
+    <linearGradient id="wine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8E2A4B"/><stop offset="1" stop-color="#5E162C"/>
+    </linearGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.4"/>
+    </filter>
+  </defs>
+
+    <rect width="96" height="96" rx="21" fill="url(#tile)"/>
+    <rect x="2.5" y="2.5" width="91" height="46" rx="19" fill="#FFFFFF" opacity="0.05"/>
+    <g fill="#000" opacity=".3" filter="url(#soft)" transform="translate(0,2)">
+      <path d="M44 25 A22.5 22.5 0 0 1 44 70 L44 62 A14.5 14.5 0 0 0 44 33 Z"/>
+      <rect x="23" y="22" width="26" height="5" rx="2"/>
+      <rect x="23" y="67" width="26" height="5" rx="2"/>
+    </g>
+    <path d="M44 25 A22.5 22.5 0 0 1 44 70 L44 62 A14.5 14.5 0 0 0 44 33 Z" fill="url(#cream)"/>
+    <rect x="23" y="22" width="26" height="5" rx="2" fill="url(#cream)"/>
+    <rect x="26" y="27.5" width="20" height="1.8" fill="url(#gold)"/>
+    <rect x="26" y="29.8" width="20" height="3.2" rx="1.2" fill="url(#cream)"/>
+    <rect x="27.5" y="33" width="17" height="29" fill="url(#cream)"/>
+    <path d="M33.5 35 V60 M38.5 35 V60" stroke="#0A1A33" stroke-width="1.6" opacity=".5" stroke-linecap="round"/>
+    <rect x="26" y="62" width="20" height="3.2" rx="1.2" fill="url(#cream)"/>
+    <rect x="23" y="67" width="26" height="5" rx="2" fill="url(#cream)"/>
+  
+</svg>

@@ -9,7 +9,7 @@ export default function Home() {
     <div className="space-y-12">
       <section className="pt-6">
         <p className="eyebrow">Exame de Ordem Unificado · 1ª fase</p>
-        <h1 className="mt-3 font-serif text-4xl font-bold leading-tight sm:text-5xl">
+        <h1 className="mt-3 font-serif text-4xl font-semibold leading-tight sm:text-5xl">
           Aprovação se constrói
           <br />
           questão por questão.
@@ -36,14 +36,14 @@ export default function Home() {
           { n: String(materias.length), l: "matérias do edital" },
         ].map((s) => (
           <div key={s.l} className="card">
-            <p className="font-serif text-3xl font-bold">{s.n}</p>
+            <p className="font-serif text-3xl font-semibold">{s.n}</p>
             <p className="mt-1 text-sm text-muted">{s.l}</p>
           </div>
         ))}
       </section>
 
       <section>
-        <h2 className="font-serif text-2xl font-bold">Estude por matéria</h2>
+        <h2 className="font-serif text-2xl font-semibold">Estude por matéria</h2>
         <p className="mt-1 text-sm text-muted">
           A distribuição segue o peso de cada matéria na prova.
         </p>
@@ -52,7 +52,7 @@ export default function Home() {
             <Link
               key={m.id}
               href={`/materias/${m.id}`}
-              className="card flex items-center justify-between transition hover:border-navy/30 dark:hover:border-gold/40"
+              className="card flex items-center justify-between transition hover:border-bordo/30 dark:hover:border-cream/30"
             >
               <div>
                 <p className="font-medium">{m.nome}</p>
@@ -60,7 +60,7 @@ export default function Home() {
                   {m.questoes_tipicas} questões na prova
                 </p>
               </div>
-              <span className="font-serif text-xl font-bold text-royal dark:text-gold">
+              <span className="font-serif text-xl font-semibold text-ink dark:text-cream">
                 {contagem[m.id] ?? 0}
               </span>
             </Link>

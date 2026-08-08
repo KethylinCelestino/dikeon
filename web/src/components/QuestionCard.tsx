@@ -7,6 +7,40 @@ import { nomeMateria, rotuloExame } from "@/lib/tipos";
 
 const LETRAS = ["A", "B", "C", "D"] as const;
 
+function IconeCerto({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M20 6 9 17l-5-5" />
+    </svg>
+  );
+}
+
+function IconeErrado({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M18 6 6 18M6 6l12 12" />
+    </svg>
+  );
+}
+
 interface Props {
   questao: Question;
   /** Numeracao dentro da sessao, ex. "12 de 20". */
@@ -29,6 +63,7 @@ export function QuestionCard({
   const [escolhida, setEscolhida] = useState<string | null>(escolhidaInicial);
   const respondida = escolhida !== null;
   const revelar = respondida && revelarNaHora;
+  const acertou = escolhida === questao.correta;
 
   function escolher(letra: string) {
     if (respondida) return;
@@ -38,26 +73,26 @@ export function QuestionCard({
 
   return (
     <article className="card">
-      <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1">
+      <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2">
         <span className="eyebrow">
           {posicao ? `${posicao} · ` : ""}
           {rotuloExame(questao.exame)} · questão {questao.numero}
         </span>
-        <span className="rounded-full bg-navy/5 px-2.5 py-0.5 text-xs font-medium text-royal dark:bg-white/10 dark:text-gold">
+        <span className="rounded-full bg-info-tint px-2.5 py-0.5 text-[13px] font-medium text-info dark:bg-white/10 dark:text-cream">
           {nomeMateria(questao.materia)}
         </span>
         {questao.desatualizada && (
-          <span className="rounded-full bg-wine/10 px-2.5 py-0.5 text-xs font-medium text-wine dark:bg-wine/25 dark:text-cream">
+          <span className="rounded-full bg-warning-tint px-2.5 py-0.5 text-[13px] font-medium text-warning dark:bg-warning/20 dark:text-cream">
             desatualizada
           </span>
         )}
       </div>
 
-      <p className="whitespace-pre-line text-[15px] leading-relaxed">
+      <p className="max-w-leitura whitespace-pre-line text-questao">
         {questao.enunciado}
       </p>
 
-      <ul className="mt-4 space-y-2">
+      <ul className="mt-5 max-w-leitura space-y-2">
         {LETRAS.map((letra) => {
           const texto = questao.alternativas[letra];
           if (!texto) return null;
@@ -65,14 +100,17 @@ export function QuestionCard({
           const isCorreta = letra === questao.correta;
           const isEscolhida = letra === escolhida;
 
+          // Feedback nunca é só cor: sempre cor + ícone + texto (seção 7).
           let estilo =
-            "border-line hover:border-navy/40 dark:border-white/15 dark:hover:border-gold/50";
+            "border-line hover:border-bordo/40 dark:border-white/15 dark:hover:border-cream/30";
           if (revelar && isCorreta) {
-            estilo = "border-green bg-green/10 dark:bg-green/20";
+            estilo =
+              "border-success bg-success-tint dark:bg-success/15 dark:border-success-dark";
           } else if (revelar && isEscolhida) {
-            estilo = "border-wine bg-wine/10 dark:bg-wine/20";
+            estilo =
+              "border-error bg-error-tint dark:bg-error/15 dark:border-error-dark";
           } else if (!revelarNaHora && isEscolhida) {
-            estilo = "border-navy bg-navy/5 dark:border-gold dark:bg-white/10";
+            estilo = "border-bordo bg-info-tint dark:border-cream dark:bg-white/10";
           }
 
           return (
@@ -80,15 +118,17 @@ export function QuestionCard({
               <button
                 onClick={() => escolher(letra)}
                 disabled={respondida && revelarNaHora}
-                className={`flex w-full gap-3 rounded-xl border p-3 text-left text-sm transition ${estilo}`}
+                aria-pressed={isEscolhida}
+                // min-h-[44px]: alvo de toque mínimo acessível.
+                className={`focavel flex min-h-[44px] w-full items-start gap-3 rounded-xl border p-3.5 text-left text-questao transition ${estilo}`}
               >
-                <span className="font-semibold">{letra}</span>
+                <span className="font-semibold tabular-nums">{letra}</span>
                 <span className="flex-1">{texto}</span>
                 {revelar && isCorreta && (
-                  <span className="font-semibold text-green">✓</span>
+                  <IconeCerto className="mt-0.5 h-5 w-5 shrink-0 text-success dark:text-success-dark" />
                 )}
                 {revelar && isEscolhida && !isCorreta && (
-                  <span className="font-semibold text-wine">✕</span>
+                  <IconeErrado className="mt-0.5 h-5 w-5 shrink-0 text-error dark:text-error-dark" />
                 )}
               </button>
             </li>
@@ -97,20 +137,33 @@ export function QuestionCard({
       </ul>
 
       {revelar && (
-        <p className="mt-4 text-sm text-muted">
-          {escolhida === questao.correta
-            ? "Correta."
-            : `Resposta correta: ${questao.correta}.`}
+        <div className="mt-4 max-w-leitura space-y-2 text-[15px]">
+          <p
+            className={`flex items-center gap-2 font-semibold ${
+              acertou
+                ? "text-success-text dark:text-success-dark"
+                : "text-error dark:text-error-dark"
+            }`}
+          >
+            {acertou ? (
+              <IconeCerto className="h-4 w-4" />
+            ) : (
+              <IconeErrado className="h-4 w-4" />
+            )}
+            {acertou ? "Você acertou." : `Resposta correta: ${questao.correta}.`}
+          </p>
           {questao.desatualizada && questao.motivo_desatualizacao && (
-            <> Atenção: {questao.motivo_desatualizacao}</>
+            <p className="rounded-xl bg-warning-tint px-3 py-2 text-warning dark:bg-warning/15 dark:text-cream">
+              Atenção: {questao.motivo_desatualizacao}
+            </p>
           )}
-        </p>
+        </div>
       )}
 
       {linkPermanente && (
         <Link
           href={`/questao/${questao.id}`}
-          className="mt-3 inline-block text-sm font-medium text-royal underline-offset-4 hover:underline dark:text-gold"
+          className="focavel mt-4 inline-block rounded text-[13px] font-medium text-bordo underline-offset-4 hover:underline dark:text-cream"
         >
           Ver questão isolada
         </Link>

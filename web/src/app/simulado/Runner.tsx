@@ -55,7 +55,7 @@ export function Runner({ questoes }: { questoes: Question[] }) {
     return (
       <div className="card">
         <p className="eyebrow">Simulado</p>
-        <h1 className="mt-2 font-serif text-3xl font-bold">
+        <h1 className="mt-2 font-serif text-3xl font-semibold">
           80 questões, 5 horas
         </h1>
         <p className="mt-3 text-[15px] leading-relaxed text-muted">
@@ -89,13 +89,13 @@ export function Runner({ questoes }: { questoes: Question[] }) {
       <div className="space-y-6">
         <div className="card text-center">
           <p className="eyebrow">Resultado</p>
-          <p className="mt-3 font-serif text-6xl font-bold">{acertos}</p>
+          <p className="mt-3 tnum font-serif text-6xl font-semibold">{acertos}</p>
           <p className="mt-1 text-muted">de {questoes.length} questões</p>
           <p
             className={`mt-4 inline-block rounded-full px-4 py-1.5 text-sm font-semibold ${
               aprovado
-                ? "bg-green/15 text-green"
-                : "bg-wine/15 text-wine dark:text-cream"
+                ? "bg-success-tint text-success-text dark:bg-success/15 dark:text-success-dark"
+                : "bg-error-tint text-error dark:bg-error/15 dark:text-error-dark"
             }`}
           >
             {aprovado ? "Aprovado" : `Faltaram ${CORTE - acertos} acertos`}
@@ -103,16 +103,16 @@ export function Runner({ questoes }: { questoes: Question[] }) {
         </div>
 
         <div className="card">
-          <h2 className="font-serif text-lg font-bold">Por matéria</h2>
+          <h2 className="font-serif text-lg font-semibold">Por matéria</h2>
           <div className="mt-4 space-y-2">
             {[...porMateria.entries()]
               .sort((a, b) => a[1].acertos / a[1].total - b[1].acertos / b[1].total)
               .map(([mid, s]) => (
                 <div key={mid} className="flex items-center gap-3 text-sm">
                   <span className="flex-1">{nomeMateria(mid)}</span>
-                  <div className="h-1.5 w-24 overflow-hidden rounded-full bg-navy/10 dark:bg-white/10">
+                  <div className="h-1.5 w-24 overflow-hidden rounded-full bg-bordo/10 dark:bg-white/10">
                     <div
-                      className="h-full rounded-full bg-gold"
+                      className="h-full rounded-full bg-bordo dark:bg-cream/70"
                       style={{ width: `${(s.acertos / s.total) * 100}%` }}
                     />
                   </div>
@@ -125,7 +125,7 @@ export function Runner({ questoes }: { questoes: Question[] }) {
         </div>
 
         <div className="space-y-4">
-          <h2 className="font-serif text-lg font-bold">Revisão</h2>
+          <h2 className="font-serif text-lg font-semibold">Revisão</h2>
           {questoes.map((q, n) => (
             <QuestionCard
               key={q.id}
@@ -146,8 +146,21 @@ export function Runner({ questoes }: { questoes: Question[] }) {
   return (
     <div className="space-y-5">
       <div className="flex items-center justify-between gap-4">
-        <span className="font-mono text-sm tabular-nums text-muted">
-          ⏱ {relogio(restante)}
+        <span className="tnum flex items-center gap-1.5 text-sm text-muted">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+            className="h-4 w-4"
+          >
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 7v5l3 2" />
+          </svg>
+          {relogio(restante)}
         </span>
         <span className="text-sm text-muted">
           {respondidas}/{questoes.length} respondidas
@@ -195,8 +208,8 @@ export function Runner({ questoes }: { questoes: Question[] }) {
               onClick={() => setI(n)}
               className={`aspect-square rounded-md text-xs font-medium transition ${
                 respostas[q.id]
-                  ? "bg-navy text-cream dark:bg-gold dark:text-navy"
-                  : "bg-navy/10 text-muted dark:bg-white/10"
+                  ? "bg-bordo text-cream dark:bg-cream dark:text-bordo"
+                  : "bg-bordo/10 text-muted dark:bg-white/10"
               } ${n === i ? "ring-2 ring-gold" : ""}`}
             >
               {n + 1}

@@ -21,7 +21,7 @@ export function Painel({
   if (dados.total === 0) {
     return (
       <div className="card text-center">
-        <h1 className="font-serif text-2xl font-bold">Nenhuma questão ainda</h1>
+        <h1 className="font-serif text-2xl font-semibold">Nenhuma questão ainda</h1>
         <p className="mt-2 text-muted">
           Responda algumas questões e seu desempenho por matéria aparece aqui.
         </p>
@@ -42,7 +42,7 @@ export function Painel({
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="font-serif text-3xl font-bold">Seu progresso</h1>
+        <h1 className="font-serif text-3xl font-semibold">Seu progresso</h1>
         <p className="mt-2 text-muted">
           Salvo neste navegador. Com conta, ele passa a acompanhar você em
           qualquer dispositivo.
@@ -56,14 +56,14 @@ export function Painel({
           { n: String(dados.respondidas.size), l: "questões distintas" },
         ].map((s) => (
           <div key={s.l} className="card">
-            <p className="font-serif text-3xl font-bold">{s.n}</p>
+            <p className="font-serif text-3xl font-semibold">{s.n}</p>
             <p className="mt-1 text-sm text-muted">{s.l}</p>
           </div>
         ))}
       </div>
 
       <div className="card">
-        <h2 className="font-serif text-lg font-bold">Por matéria</h2>
+        <h2 className="font-serif text-lg font-semibold">Por matéria</h2>
         <p className="mt-1 text-sm text-muted">
           Da mais fraca para a mais forte. Comece por cima.
         </p>
@@ -77,10 +77,10 @@ export function Painel({
                 className="flex items-center gap-3 text-sm"
               >
                 <span className="flex-1">{nomeMateria(materia.id)}</span>
-                <div className="h-1.5 w-28 overflow-hidden rounded-full bg-navy/10 dark:bg-white/10">
+                <div className="h-1.5 w-28 overflow-hidden rounded-full bg-bordo/10 dark:bg-white/10">
                   <div
                     className={`h-full rounded-full ${
-                      taxa >= 70 ? "bg-green" : taxa >= 50 ? "bg-gold" : "bg-wine"
+                      taxa >= 70 ? "bg-success" : taxa >= 50 ? "bg-warning" : "bg-error"
                     }`}
                     style={{ width: `${taxa}%` }}
                   />

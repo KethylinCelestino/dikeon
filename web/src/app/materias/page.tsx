@@ -15,7 +15,7 @@ export default function Materias() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="font-serif text-3xl font-bold">Matérias</h1>
+        <h1 className="font-serif text-3xl font-semibold">Matérias</h1>
         <p className="mt-2 text-muted">
           As 18 matérias do edital e quantas questões cada uma costuma ter nas
           80 da prova.
@@ -27,11 +27,11 @@ export default function Materias() {
           <Link
             key={m.id}
             href={`/materias/${m.id}`}
-            className="card transition hover:border-navy/30 dark:hover:border-gold/40"
+            className="card transition hover:border-bordo/30 dark:hover:border-cream/30"
           >
             <div className="flex items-baseline justify-between gap-3">
               <p className="font-medium">{m.nome}</p>
-              <span className="font-serif text-lg font-bold text-royal dark:text-gold">
+              <span className="font-serif text-lg font-semibold text-ink dark:text-cream">
                 {contagem[m.id] ?? 0}
               </span>
             </div>

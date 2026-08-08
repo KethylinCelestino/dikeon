@@ -37,7 +37,7 @@ export default async function MateriaPage({ params }: Props) {
         <Link href="/materias" className="text-sm text-muted hover:underline">
           ← Matérias
         </Link>
-        <h1 className="mt-2 font-serif text-3xl font-bold">{materia.nome}</h1>
+        <h1 className="mt-2 font-serif text-3xl font-semibold">{materia.nome}</h1>
         <p className="mt-2 text-muted">
           {total} questões · cerca de {materia.questoes_tipicas} das 80 da prova
         </p>
@@ -47,7 +47,7 @@ export default async function MateriaPage({ params }: Props) {
       </div>
 
       <div>
-        <h2 className="font-serif text-xl font-bold">Temas</h2>
+        <h2 className="font-serif text-xl font-semibold">Temas</h2>
         <div className="mt-4 space-y-2">
           {materia.temas.map((tema) => {
             const n = porTema[tema] ?? 0;
@@ -57,7 +57,7 @@ export default async function MateriaPage({ params }: Props) {
                 href={`/praticar?materia=${id}&tema=${encodeURIComponent(tema)}`}
                 className={`flex items-center justify-between rounded-xl border border-line px-4 py-3 text-sm transition dark:border-white/15 ${
                   n
-                    ? "hover:border-navy/30 dark:hover:border-gold/40"
+                    ? "hover:border-bordo/30 dark:hover:border-cream/30"
                     : "pointer-events-none opacity-45"
                 }`}
               >

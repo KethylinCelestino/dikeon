@@ -2,7 +2,6 @@
 # necessário para o build (o pipeline já produziu web/data/questions.json, que
 # é versionado). Os PDFs são rebaixáveis de examedeordem.oab.org.br.
 content/
-graduacao/
 
 # Segredos
 .env

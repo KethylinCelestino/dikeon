@@ -46,7 +46,7 @@ export default async function QuestaoPage({ params }: Props) {
         >
           ← {nomeMateria(questao.materia)}
         </Link>
-        <h1 className="mt-2 font-serif text-2xl font-bold">
+        <h1 className="mt-2 font-serif text-2xl font-semibold">
           {rotuloExame(questao.exame)} · questão {questao.numero}
         </h1>
         {questao.tema && <p className="mt-1 text-muted">{questao.tema}</p>}
@@ -56,7 +56,7 @@ export default async function QuestaoPage({ params }: Props) {
 
       {relacionadas.length > 0 && (
         <section>
-          <h2 className="font-serif text-lg font-bold">
+          <h2 className="font-serif text-lg font-semibold">
             Outras questões do mesmo tema
           </h2>
           <ul className="mt-3 space-y-2">
@@ -64,7 +64,7 @@ export default async function QuestaoPage({ params }: Props) {
               <li key={q.id}>
                 <Link
                   href={`/questao/${q.id}`}
-                  className="block rounded-xl border border-line p-3 text-sm transition hover:border-navy/30 dark:border-white/15 dark:hover:border-gold/40"
+                  className="block rounded-xl border border-line p-3 text-sm transition hover:border-bordo/30 dark:border-white/15 dark:hover:border-cream/30"
                 >
                   <span className="eyebrow">{rotuloExame(q.exame)}</span>
                   <span className="mt-1 block line-clamp-2 text-muted">

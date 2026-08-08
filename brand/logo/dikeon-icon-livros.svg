@@ -1,0 +1,33 @@
+<svg width="96" height="96" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dikeon">
+<defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#17325C"/><stop offset="1" stop-color="#081526"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F3D178"/><stop offset=".55" stop-color="#E2B84A"/><stop offset="1" stop-color="#C0922E"/>
+    </linearGradient>
+    <linearGradient id="cream" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFCF4"/><stop offset="1" stop-color="#EDE2CB"/>
+    </linearGradient>
+    <linearGradient id="wine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8E2A4B"/><stop offset="1" stop-color="#5E162C"/>
+    </linearGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.4"/>
+    </filter>
+  </defs>
+
+    <rect width="96" height="96" rx="21" fill="url(#tile)"/>
+    <rect x="2.5" y="2.5" width="91" height="46" rx="19" fill="#FFFFFF" opacity="0.05"/>
+    <path fill-rule="evenodd" fill="url(#cream)" d="M30 22 H47 A25 25 0 0 1 47 72 H30 Z M39 31 H47 A16 16 0 0 1 47 63 H39 Z"/>
+    <g fill="#000" opacity=".32" filter="url(#soft)" transform="translate(0,2)">
+      <rect x="28" y="48" width="34" height="9.5" rx="2.5"/>
+      <rect x="24" y="60" width="40" height="11" rx="2.5"/>
+    </g>
+    <rect x="28" y="48" width="34" height="9.5" rx="2.5" fill="url(#gold)"/>
+    <rect x="57" y="49.5" width="4" height="6.5" rx="1" fill="url(#cream)"/>
+    <rect x="24" y="60" width="40" height="11" rx="2.5" fill="url(#wine)"/>
+    <rect x="59" y="61.5" width="4" height="8" rx="1" fill="url(#cream)"/>
+    <path d="M50 71 v7 l2.5 -2.5 l2.5 2.5 v-7 z" fill="url(#gold)"/>
+  
+</svg>

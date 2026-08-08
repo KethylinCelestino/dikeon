@@ -8,9 +8,10 @@ Domínio: **dikeon.com.br** · Deploy: Vercel
 
 ```
 dike/
-├── content/provas/     ← 45 exames, 1187 PDFs (fonte)
-├── content/vade-mecum/ ← Vade Mecum do Senado (ainda não processado)
-├── graduacao/          ← anotações por matéria (fonte para resumos futuros)
+├── content/            ← fontes (fora do Git, ver "O que fica fora do Git")
+│   ├── provas/         ← 45 exames, 1187 PDFs
+│   ├── vade-mecum/     ← Vade Mecum do Senado (ainda não processado)
+│   └── graduacao/      ← anotações por matéria (fonte para resumos futuros)
 ├── pipeline/           ← Python: extração e classificação
 │   ├── edital.json            ← 18 matérias × temas + pesos na prova
 │   ├── parse_provas_1fase.py  ← PDFs → questions_raw.json
@@ -95,8 +96,8 @@ progresso no localStorage).
 
 ### O que fica fora do Git
 
-`content/` (705 MB de PDFs da OAB) e `graduacao/` (65 MB de anotações) estão no
-`.gitignore`. O build não precisa deles — o pipeline já produziu
+`content/` está no `.gitignore`: 705 MB de PDFs da OAB mais 65 MB de anotações
+de graduação. O build não precisa deles — o pipeline já produziu
 `web/data/questions.json`, que é versionado, junto com `questions_raw.json`,
 que permite re-rodar a classificação sem os PDFs.
 
