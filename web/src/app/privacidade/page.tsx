@@ -21,7 +21,7 @@ const CONTATO = "privacidade@dikeon.com.br";
 
 export default function Privacidade() {
   return (
-    <Legal titulo="Política de Privacidade" atualizadoEm="8 de agosto de 2026">
+    <Legal titulo="Política de Privacidade" atualizadoEm="9 de agosto de 2026">
       <p>
         Esta política explica quais dados pessoais o Dikeon coleta, por que
         coleta, com quem compartilha e o que você pode exigir a respeito
@@ -70,8 +70,15 @@ export default function Privacidade() {
         </li>
         <li>
           <strong>Preferências locais:</strong> guardamos no seu navegador a
-          escolha entre tema claro e escuro. Não usamos cookies de publicidade
-          nem de rastreamento entre sites.
+          escolha entre tema claro e escuro.
+        </li>
+        <li>
+          <strong>Medição de audiência:</strong> usamos o Google Analytics para
+          entender, de forma agregada, quais páginas são acessadas e como a
+          plataforma é usada. Ele grava cookies próprios no seu navegador para
+          distinguir uma visita da outra. Não usamos cookies de publicidade,
+          não ativamos recursos de rastreamento entre sites e não cruzamos essa
+          medição com a sua conta.
         </li>
       </ul>
 
@@ -122,6 +129,12 @@ export default function Privacidade() {
           sua mensagem e um resumo do seu desempenho por matéria, apenas
           quando você usa o chat. Não enviamos seu e-mail nem seu nome.
         </li>
+        <li>
+          <strong>Google Analytics</strong> — medição de audiência. Recebe
+          dados de navegação: páginas visitadas, endereço IP, tipo de aparelho
+          e de navegador. Não enviamos seu e-mail, seu nome nem seu histórico
+          de estudo.
+        </li>
       </ul>
 
       <h3>Transferência internacional</h3>
@@ -131,7 +144,9 @@ export default function Privacidade() {
         nos termos do art. 33 da LGPD, com base na execução do contrato entre
         você e o Dikeon e nas garantias contratuais oferecidas por cada
         fornecedor. Se você não concorda com isso, use a plataforma sem criar
-        conta: nesse caso nada seu sai do seu navegador.
+        conta: nesse caso seu histórico de estudo não sai do seu navegador —
+        saem apenas os dados técnicos de acesso e os de medição de audiência
+        descritos acima.
       </p>
 
       <h2>4. Por quanto tempo guardamos</h2>

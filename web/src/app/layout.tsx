@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import Script from "next/script";
 import { Inter, Lora } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ptBR } from "@clerk/localizations";
@@ -50,6 +51,10 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
 };
+
+// Measurement ID do Google Analytics. É público por natureza: vai no bundle do
+// cliente de qualquer forma, então não faz sentido escondê-lo no ambiente.
+const GA_ID = "G-NKDRMTS9C0";
 
 const NAV = [
   { href: "/praticar", label: "Praticar" },
@@ -132,6 +137,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </nav>
           </div>
         </footer>
+
+        {/* Só em produção: sem essa guarda, cada `pnpm dev` somaria sessões de
+            desenvolvimento aos relatórios e distorceria as métricas reais. */}
+        {process.env.NODE_ENV === "production" && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_ID}');
+              `}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );
