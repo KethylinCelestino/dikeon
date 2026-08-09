@@ -91,11 +91,14 @@ export function QuestionCard({
         )}
       </div>
 
-      <p className="texto-justificado max-w-leitura whitespace-pre-line text-questao">
+      {/* Sem max-w-leitura: dentro do card, o texto acompanha a largura da
+          caixa. Limitar a medida aqui deixava uma faixa branca à direita que,
+          depois da justificação, ficou evidente. */}
+      <p className="texto-justificado whitespace-pre-line text-questao">
         {questao.enunciado}
       </p>
 
-      <ul className="mt-5 max-w-leitura space-y-2">
+      <ul className="mt-5 space-y-2">
         {LETRAS.map((letra) => {
           const texto = questao.alternativas[letra];
           if (!texto) return null;
@@ -140,7 +143,7 @@ export function QuestionCard({
       </ul>
 
       {revelar && (
-        <div className="mt-4 max-w-leitura space-y-2 text-[15px]">
+        <div className="mt-4 space-y-2 text-[15px]">
           <p
             className={`flex items-center gap-2 font-semibold ${
               acertou

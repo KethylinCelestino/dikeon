@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { nomeMateria, type Flashcard } from "@/lib/tipos";
+import { nomeMateria, tituloTema, type Flashcard } from "@/lib/tipos";
 import { avaliar, montarSessao, resumo, type Nota, type ResumoSrs } from "@/lib/srs";
 
 const TAMANHO_SESSAO = 20;
@@ -103,7 +103,7 @@ export function Sessao({ cartoes }: Props) {
         <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2">
           <span className="eyebrow">{nomeMateria(cartao.materia)}</span>
           <span className="rounded-full bg-info-tint px-2.5 py-0.5 text-[13px] font-medium text-info dark:bg-white/10 dark:text-cream">
-            {cartao.tema}
+            {tituloTema(cartao.tema)}
           </span>
         </div>
 

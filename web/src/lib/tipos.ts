@@ -63,6 +63,48 @@ export function nomeMateria(id: string | null): string {
   return getMateria(id)?.nome ?? "Sem classificação";
 }
 
+/**
+ * Palavras que ficam em minuscula no meio de um titulo. Sao preposicoes,
+ * artigos e conjuncoes: capitaliza-las e o que faz Title Case parecer
+ * traduzido a maquina.
+ */
+const MINUSCULAS = new Set([
+  "de", "da", "do", "das", "dos", "e", "ou", "em", "no", "na", "nos", "nas",
+  "a", "o", "as", "os", "ao", "aos", "à", "às", "para", "por", "com", "sem",
+  "sob", "entre",
+]);
+
+const LETRA = /[0-9A-Za-zÁÉÍÓÚÂÊÔÃÕÇáéíóúâêôãõç]/;
+const SEM_PONTUACAO = /[^0-9A-Za-zÁÉÍÓÚÂÊÔÃÕÇáéíóúâêôãõç/]/g;
+
+/**
+ * Converte um tema para Title Case, preservando siglas.
+ *
+ * Title Case nao e a convencao do portugues — a escolha aqui e de marca, nao
+ * de gramatica. O que a funcao evita e o resultado ruim de um `.toUpperCase()`
+ * ingenuo: siglas viram "Oab" e "Bpc/Loas", e cada "de"/"da"/"e" ganha
+ * maiuscula. Por isso ela olha token a token.
+ *
+ * Nao mexe em slug nem em URL: `slugificar` normaliza para minusculas antes,
+ * entao os links seguem os mesmos.
+ */
+export function tituloTema(tema: string): string {
+  return tema
+    .split(" ")
+    .map((palavra, i) => {
+      // Sigla (ECA, OAB, BPC/LOAS): ja veio em caixa alta, fica como esta.
+      const nu = palavra.replace(SEM_PONTUACAO, "");
+      if (nu && nu === nu.toUpperCase() && LETRA.test(nu)) return palavra;
+
+      const base = palavra.toLowerCase();
+      if (i > 0 && MINUSCULAS.has(base.replace(/[(),.]/g, ""))) return base;
+
+      // Capitaliza a primeira letra, respeitando um "(" ou aspas na frente.
+      return base.replace(LETRA, (c) => c.toUpperCase());
+    })
+    .join(" ");
+}
+
 /** Numero do exame para ordenacao ("exame-46" -> 46, "exame-2010-2" -> 0). */
 export function ordemExame(id: string): number {
   const m = /^exame-(\d{1,2})$/.exec(id);

@@ -1,7 +1,13 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { materias, getMateria, contarPorTema, filtrar } from "@/lib/questions";
+import {
+  materias,
+  getMateria,
+  contarPorTema,
+  filtrar,
+  tituloTema,
+} from "@/lib/questions";
 import { flashcardsDaMateria } from "@/lib/flashcards";
 import { slugificar } from "@/lib/slug";
 
@@ -71,7 +77,7 @@ export default async function MateriaPage({ params }: Props) {
                     : "pointer-events-none opacity-45"
                 }`}
               >
-                <span>{tema}</span>
+                <span>{tituloTema(tema)}</span>
                 <span className="text-muted">{n}</span>
               </Link>
             );

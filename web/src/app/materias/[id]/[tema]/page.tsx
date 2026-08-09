@@ -8,6 +8,7 @@ import {
   nomeMateria,
   rotuloExame,
   temasComQuestoes,
+  tituloTema,
 } from "@/lib/questions";
 import { flashcardsDaMateria } from "@/lib/flashcards";
 import { slugificar } from "@/lib/slug";
@@ -41,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const n = filtrar({ materia: id, tema }).length;
   return {
-    title: `${tema} — ${n} questões da OAB com gabarito`,
+    title: `${tituloTema(tema)} — ${n} questões da OAB com gabarito`,
     description:
       `${n} questões de ${tema} (${nomeMateria(id)}) já cobradas na 1ª fase ` +
       `do Exame de Ordem, com gabarito comentado e fundamento legal.`,
@@ -67,10 +68,12 @@ export default async function TemaPage({ params }: Props) {
           trilha={[
             { nome: "Matérias", href: "/materias" },
             { nome: materia.nome, href: `/materias/${id}` },
-            { nome: tema },
+            { nome: tituloTema(tema) },
           ]}
         />
-        <h1 className="mt-3 font-serif text-3xl font-semibold">{tema}</h1>
+        <h1 className="mt-3 font-serif text-3xl font-semibold">
+          {tituloTema(tema)}
+        </h1>
         <p className="mt-2 max-w-leitura text-muted">
           {questoes.length}{" "}
           {questoes.length === 1 ? "questão já cobrada" : "questões já cobradas"}{" "}
@@ -94,7 +97,7 @@ export default async function TemaPage({ params }: Props) {
 
       <section>
         <h2 className="font-serif text-xl font-semibold">
-          Questões de {tema}
+          Questões de {tituloTema(tema)}
         </h2>
         <ul className="mt-4 space-y-2">
           {questoes.map((q) => (
@@ -106,7 +109,7 @@ export default async function TemaPage({ params }: Props) {
                 <span className="eyebrow">
                   {rotuloExame(q.exame)} · questão {q.numero}
                 </span>
-                <span className="mt-1 block line-clamp-2 text-sm">
+                <span className="texto-justificado mt-1 block line-clamp-2 text-sm">
                   {q.enunciado}
                 </span>
               </Link>

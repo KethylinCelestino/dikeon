@@ -8,6 +8,7 @@ import {
   getQuestion,
   nomeMateria,
   rotuloExame,
+  tituloTema,
 } from "@/lib/questions";
 import { getExplicacao } from "@/lib/explicacoes";
 import { slugificar } from "@/lib/slug";
@@ -89,7 +90,7 @@ export default async function QuestaoPage({ params }: Props) {
             ...(questao.tema
               ? [
                   {
-                    nome: questao.tema,
+                    nome: tituloTema(questao.tema),
                     href: `/materias/${questao.materia}/${slugificar(questao.tema)}`,
                   },
                 ]
@@ -102,7 +103,7 @@ export default async function QuestaoPage({ params }: Props) {
         </h1>
         <p className="mt-1 text-muted">
           {materia}
-          {questao.tema ? ` · ${questao.tema}` : ""}
+          {questao.tema ? ` · ${tituloTema(questao.tema)}` : ""}
         </p>
       </div>
 
@@ -113,7 +114,7 @@ export default async function QuestaoPage({ params }: Props) {
         depois de responder, o que o deixa invisível para quem chega pelo
         buscador — e é exatamente o que a pessoa procurou.
       */}
-      <section className="max-w-leitura">
+      <section>
         <h2 className="font-serif text-xl font-semibold">Gabarito comentado</h2>
         <p className="mt-3">
           <span className="font-semibold">Resposta correta: {correta}</span>
@@ -168,7 +169,8 @@ export default async function QuestaoPage({ params }: Props) {
       {relacionadas.length > 0 && (
         <section>
           <h2 className="font-serif text-xl font-semibold">
-            Outras questões de {questao.tema ?? materia}
+            Outras questões de{" "}
+            {questao.tema ? tituloTema(questao.tema) : materia}
           </h2>
           <ul className="mt-3 space-y-2">
             {relacionadas.map((q) => (

@@ -60,23 +60,23 @@ body {
   }
 
   /* Justificação para texto corrido longo (enunciados, explicações, páginas
-     legais, artigos de lei). A hifenização é obrigatória junto: justificar
-     sem separar sílabas abre "rios" de espaço entre as palavras, e português
-     tem palavras longas o bastante para isso ficar evidente. Quem fornece o
-     dicionário de separação é o lang="pt-BR" do <html>. */
+     legais, artigos de lei).
+
+     `hyphens: manual` é o padrão do CSS e está aqui explícito de propósito:
+     nenhuma palavra é cortada no fim da linha. O custo é que os espaços entre
+     as palavras variam mais para fechar a margem — o que a linha mais larga
+     dentro do card ajuda a diluir, por caber mais palavra por linha. */
   .texto-justificado {
     text-align: justify;
-    hyphens: auto;
-    -webkit-hyphens: auto;
+    hyphens: manual;
   }
 
   /* Em coluna estreita a justificação piora o que deveria melhorar: com
-     poucas palavras por linha, os vãos ficam grandes demais. No celular,
-     volta para alinhamento à esquerda. */
+     poucas palavras por linha, os vãos ficam grandes demais — e sem hífen
+     esse efeito é mais forte ainda. No celular, alinhamento à esquerda. */
   @media (max-width: 639px) {
     .texto-justificado {
       text-align: left;
-      hyphens: manual;
     }
   }
 
