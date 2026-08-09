@@ -39,7 +39,9 @@ export default async function DiplomaPage({ params }: Props) {
         <p className="mt-2 text-muted">{diploma.artigos.length} artigos</p>
       </div>
 
-      <div className="max-w-leitura space-y-5">
+      {/* Sem medida de leitura: a linha divisória entre artigos parava a 68ch
+          e deixava a metade direita da página vazia. */}
+      <div className="space-y-5">
         {diploma.artigos.map((a) => (
           <article
             key={a.numero}

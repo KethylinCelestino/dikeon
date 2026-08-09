@@ -1,67 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { desempenho, type Desempenho } from "@/lib/progresso";
-
-interface Mensagem {
-  papel: "user" | "assistant";
-  texto: string;
-}
-
-const SUGESTOES = [
-  "Analise meus erros e diga por onde começar",
-  "Tenho 30 minutos hoje. O que estudo?",
-  "Explique controle de constitucionalidade difuso e concentrado",
-  "Monte um plano para as próximas duas semanas",
-];
+import { SUGESTOES, useZel } from "@/lib/useZel";
 
 export function Chat() {
-  const [mensagens, setMensagens] = useState<Mensagem[]>([]);
+  const { mensagens, pensando, enviar } = useZel();
   const [entrada, setEntrada] = useState("");
-  const [pensando, setPensando] = useState(false);
-  const [dados, setDados] = useState<Desempenho | null>(null);
   const fim = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    void desempenho().then(setDados);
-  }, []);
 
   useEffect(() => {
     fim.current?.scrollIntoView({ behavior: "smooth" });
   }, [mensagens, pensando]);
-
-  async function enviar(texto: string) {
-    const limpo = texto.trim();
-    if (!limpo || pensando) return;
-
-    const novas: Mensagem[] = [...mensagens, { papel: "user", texto: limpo }];
-    setMensagens(novas);
-    setEntrada("");
-    setPensando(true);
-
-    try {
-      const r = await fetch("/api/zel", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ mensagens: novas, desempenho: dados }),
-      });
-      const d = await r.json();
-      setMensagens([
-        ...novas,
-        {
-          papel: "assistant",
-          texto: d.texto ?? d.erro ?? "Não consegui responder agora.",
-        },
-      ]);
-    } catch {
-      setMensagens([
-        ...novas,
-        { papel: "assistant", texto: "Falhou a conexão. Tente de novo." },
-      ]);
-    } finally {
-      setPensando(false);
-    }
-  }
 
   return (
     <div className="space-y-5">
@@ -113,6 +62,7 @@ export function Chat() {
         onSubmit={(e) => {
           e.preventDefault();
           void enviar(entrada);
+          setEntrada("");
         }}
         className="sticky bottom-4 flex gap-2"
       >

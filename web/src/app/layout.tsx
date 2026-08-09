@@ -8,6 +8,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { ptBR } from "@clerk/localizations";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Conta } from "@/components/Conta";
+import { ZelFlutuante } from "@/components/ZelFlutuante";
 import { authAtiva } from "@/lib/auth";
 import { SITE_NAME, SITE_TAGLINE, SITE_URL, DEFAULT_DESCRIPTION } from "@/lib/seo";
 
@@ -63,6 +64,7 @@ const NAV = [
   { href: "/vademecum", label: "Vade Mecum" },
   { href: "/exames", label: "Provas" },
   { href: "/2a-fase", label: "2ª fase" },
+  { href: "/progresso", label: "Progresso" },
   { href: "/perfil", label: "Perfil" },
 ];
 
@@ -137,6 +139,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </nav>
           </div>
         </footer>
+
+        {/* Mesmo critério da página /zel: sem chave, a tutora não existe, e um
+            balão que só sabe dizer "indisponível" é pior que balão nenhum. */}
+        {Boolean(process.env.ANTHROPIC_API_KEY) && <ZelFlutuante />}
 
         {/* Só em produção: sem essa guarda, cada `pnpm dev` somaria sessões de
             desenvolvimento aos relatórios e distorceria as métricas reais. */}

@@ -98,12 +98,12 @@ export function Padrao({
     <article className="card">
       <h2 className="font-serif text-xl font-semibold">{titulo}</h2>
 
-      <p className="texto-justificado mt-4 max-w-leitura whitespace-pre-line text-questao">
+      <p className="texto-justificado mt-4 whitespace-pre-line text-questao">
         {secao.enunciado}
       </p>
 
       {correcaoAtiva && temPadrao && (
-        <div className="mt-6 max-w-leitura">
+        <div className="mt-6">
           <label
             htmlFor={`resposta-${chave}`}
             className="block text-sm font-medium"
@@ -143,7 +143,7 @@ export function Padrao({
       )}
 
       {correcao && (
-        <section className="mt-6 max-w-leitura rounded-xl bg-info-tint p-5 dark:bg-white/5">
+        <section className="mt-6 rounded-xl bg-info-tint p-5 dark:bg-white/5">
           <p className="eyebrow">Correção estimada</p>
           <p className="mt-2 tnum font-serif text-4xl font-semibold">
             {nota(correcao.nota)}
