@@ -48,7 +48,7 @@ export default async function DiplomaPage({ params }: Props) {
             className="scroll-mt-24 border-b border-line pb-5 last:border-0 dark:border-white/10"
           >
             <p className="eyebrow">Art. {a.numero}</p>
-            <p className="mt-1.5 text-questao">{a.texto}</p>
+            <p className="texto-justificado mt-1.5 text-questao">{a.texto}</p>
           </article>
         ))}
       </div>

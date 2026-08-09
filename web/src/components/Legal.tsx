@@ -18,7 +18,7 @@ export function Legal({
       <p className="mt-2 text-sm text-muted">
         Última atualização: {atualizadoEm}
       </p>
-      <div className="mt-8 space-y-6 leading-relaxed [&_a]:underline [&_a]:underline-offset-4 [&_h2]:mt-10 [&_h2]:font-serif [&_h2]:text-xl [&_h2]:font-semibold [&_h3]:mt-6 [&_h3]:font-semibold [&_li]:leading-relaxed [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5">
+      <div className="mt-8 space-y-6 leading-relaxed [&_li]:texto-justificado [&_p]:texto-justificado [&_a]:underline [&_a]:underline-offset-4 [&_h2]:mt-10 [&_h2]:font-serif [&_h2]:text-xl [&_h2]:font-semibold [&_h3]:mt-6 [&_h3]:font-semibold [&_li]:leading-relaxed [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5">
         {children}
       </div>
     </article>

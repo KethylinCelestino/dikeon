@@ -59,6 +59,27 @@ body {
     @apply text-[11px] font-semibold uppercase tracking-[0.14em] text-muted;
   }
 
+  /* Justificação para texto corrido longo (enunciados, explicações, páginas
+     legais, artigos de lei). A hifenização é obrigatória junto: justificar
+     sem separar sílabas abre "rios" de espaço entre as palavras, e português
+     tem palavras longas o bastante para isso ficar evidente. Quem fornece o
+     dicionário de separação é o lang="pt-BR" do <html>. */
+  .texto-justificado {
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+
+  /* Em coluna estreita a justificação piora o que deveria melhorar: com
+     poucas palavras por linha, os vãos ficam grandes demais. No celular,
+     volta para alinhamento à esquerda. */
+  @media (max-width: 639px) {
+    .texto-justificado {
+      text-align: left;
+      hyphens: manual;
+    }
+  }
+
   /* Foco visível em todo elemento interativo (seção 7 do guia). */
   .focavel {
     @apply focus-visible:outline-none focus-visible:ring-2

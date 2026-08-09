@@ -91,7 +91,7 @@ export function QuestionCard({
         )}
       </div>
 
-      <p className="max-w-leitura whitespace-pre-line text-questao">
+      <p className="texto-justificado max-w-leitura whitespace-pre-line text-questao">
         {questao.enunciado}
       </p>
 

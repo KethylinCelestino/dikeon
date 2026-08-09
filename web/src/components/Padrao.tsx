@@ -98,7 +98,7 @@ export function Padrao({
     <article className="card">
       <h2 className="font-serif text-xl font-semibold">{titulo}</h2>
 
-      <p className="mt-4 max-w-leitura whitespace-pre-line text-questao">
+      <p className="texto-justificado mt-4 max-w-leitura whitespace-pre-line text-questao">
         {secao.enunciado}
       </p>
 
@@ -158,7 +158,9 @@ export function Padrao({
             />
           </div>
 
-          <p className="mt-4 leading-relaxed">{correcao.resumo}</p>
+          <p className="texto-justificado mt-4 leading-relaxed">
+            {correcao.resumo}
+          </p>
 
           {correcao.faltou?.length > 0 && (
             <>

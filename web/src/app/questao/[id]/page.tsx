@@ -124,7 +124,9 @@ export default async function QuestaoPage({ params }: Props) {
 
         {explicacao ? (
           <>
-            <p className="mt-3 leading-relaxed">{explicacao.correta}</p>
+            <p className="texto-justificado mt-3 leading-relaxed">
+              {explicacao.correta}
+            </p>
 
             {Object.keys(explicacao.erradas).length > 0 && (
               <>
@@ -133,7 +135,7 @@ export default async function QuestaoPage({ params }: Props) {
                 </h3>
                 <ul className="mt-2 space-y-2">
                   {Object.entries(explicacao.erradas).map(([letra, texto]) => (
-                    <li key={letra} className="leading-relaxed">
+                    <li key={letra} className="texto-justificado leading-relaxed">
                       <span className="font-semibold">{letra}) </span>
                       {texto}
                     </li>
