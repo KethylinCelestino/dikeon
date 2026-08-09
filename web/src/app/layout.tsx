@@ -8,6 +8,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { ptBR } from "@clerk/localizations";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Conta } from "@/components/Conta";
+import { MenuMobile } from "@/components/MenuMobile";
 import { ZelFlutuante } from "@/components/ZelFlutuante";
 import { authAtiva } from "@/lib/auth";
 import { SITE_NAME, SITE_TAGLINE, SITE_URL, DEFAULT_DESCRIPTION } from "@/lib/seo";
@@ -105,20 +106,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </Link>
               ))}
             </nav>
-            <Conta />
-            <ThemeToggle />
+            {/* ml-auto no mobile: sem o menu do desktop (que carrega o
+                ml-auto), os controles ficariam colados no logo. */}
+            <div className="ml-auto flex items-center gap-2 lg:ml-0">
+              <Conta />
+              <ThemeToggle />
+              <MenuMobile itens={NAV} />
+            </div>
           </div>
-          <nav className="flex gap-1 overflow-x-auto border-t border-line px-4 py-2 lg:hidden dark:border-white/10">
-            {NAV.map((n) => (
-              <Link
-                key={n.href}
-                href={n.href}
-                className="focavel whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-medium text-muted"
-              >
-                {n.label}
-              </Link>
-            ))}
-          </nav>
         </header>
 
         <main className="mx-auto max-w-5xl px-4 py-8">{children}</main>
